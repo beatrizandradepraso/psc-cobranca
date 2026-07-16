@@ -9,7 +9,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --praso:#2D4BDE;--praso-dark:#1e35b0;--praso-light:#EEF1FD;--praso-mid:#C5CEFA;
-  --m0:#2D4BDE;--m0-bg:#EEF1FD;--m0-brd:#C5CEFA;
+  --m0:#2D4BDE;--m0-bg:#EEF1FD;
   --m1:#0ea5a0;--m1-bg:#E6F6F5;--m1-brd:#99D9D7;--m1-txt:#0a6e6b;
   --bg:#fff;--bg2:#F6F7F9;--bg3:#EDEEF2;
   --text:#16171A;--text2:#5A5C66;--text3:#9B9DA8;
@@ -34,41 +34,29 @@ body{font-family:var(--font);font-size:14px;background:var(--bg2);color:var(--te
 .sb-logo-txt h1{font-size:13px;font-weight:700;color:var(--text)}
 .sb-logo-txt p{font-size:10px;color:var(--text3);margin-top:1px}
 .sb-sec{padding:.875rem 1rem .5rem;flex:1}
-.sb-sec-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text3);margin-bottom:8px;display:flex;align-items:center;justify-content:space-between}
-.btn-nova-sb{font-size:11px;padding:3px 8px;border-radius:6px;border:1px solid var(--praso);background:none;color:var(--praso);cursor:pointer;font-family:var(--font);font-weight:600}
-.btn-nova-sb:hover{background:var(--praso-light)}
-.sb-month{margin-bottom:12px}
+.sb-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text3);margin-bottom:8px;display:flex;align-items:center;justify-content:space-between}
+.btn-nova{font-size:11px;padding:3px 8px;border-radius:6px;border:1px solid var(--praso);background:none;color:var(--praso);cursor:pointer;font-family:var(--font);font-weight:600}
+.btn-nova:hover{background:var(--praso-light)}
+.sb-month{margin-bottom:10px}
 .sb-month-name{font-size:12px;font-weight:700;color:var(--text2);padding:4px 2px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none}
-.sb-month-name:hover{color:var(--text)}
 .sb-month-name .arr{font-size:10px;color:var(--text3);transition:transform .18s}
 .sb-month-name.open .arr{transform:rotate(90deg)}
-.sb-weeks{padding-left:6px;margin-top:2px}
-.wk-item{font-size:12px;color:var(--text2);padding:6px 8px;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;transition:background .12s;gap:4px}
+.wk-item{font-size:12px;color:var(--text2);padding:6px 8px;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;transition:background .12s}
 .wk-item:hover{background:var(--bg2);color:var(--text)}
 .wk-item.active{background:var(--praso-light);color:var(--praso);font-weight:600}
-.wk-item-label{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px}
-.wk-item-sub{font-size:10px;color:var(--text3);display:block;margin-top:1px}
-.wk-actions{display:none;gap:2px;flex-shrink:0}
-.wk-item:hover .wk-actions,.wk-item.active .wk-actions{display:flex}
-.wk-btn{background:none;border:none;cursor:pointer;padding:2px 5px;border-radius:3px;font-size:11px;color:var(--text3)}
-.wk-btn:hover{background:var(--bg3);color:var(--text)}
-.wk-btn.del:hover{color:#ef4444;background:var(--red-bg)}
-.btn-new-wk-sm{font-size:11px;padding:5px 8px;border-radius:6px;border:1px dashed var(--brd2);background:none;color:var(--text3);cursor:pointer;width:100%;text-align:left;margin-top:4px;font-family:var(--font)}
-.btn-new-wk-sm:hover{color:var(--text);background:var(--bg2)}
+.wk-item .wk-del{opacity:0;font-size:11px;background:none;border:none;color:inherit;cursor:pointer;padding:2px 4px}
+.wk-item:hover .wk-del,.wk-item.active .wk-del{opacity:.5}
+.wk-item .wk-del:hover{opacity:1;color:#ef4444}
+.btn-new-wk{font-size:11px;padding:5px 8px;border-radius:6px;border:1px dashed var(--brd2);background:none;color:var(--text3);cursor:pointer;width:100%;text-align:left;margin-top:4px;font-family:var(--font)}
+.btn-new-wk:hover{color:var(--text);background:var(--bg2)}
 .sb-visao{padding:.75rem 1rem;border-top:1px solid var(--brd)}
 .sb-footer{padding:.75rem 1rem;border-top:1px solid var(--brd);font-size:11px;color:var(--text3);display:flex;align-items:center;gap:6px}
-.dot{width:7px;height:7px;border-radius:50%;background:#22c55e;flex-shrink:0}
+.dot{width:7px;height:7px;border-radius:50%;background:#22c55e;flex-shrink:0;transition:background .3s}
 .dot.saving{background:#f59e0b}.dot.err{background:#ef4444}
 
 /* MAIN */
 .main{flex:1;overflow-y:auto;background:var(--bg2)}
 .main-inner{max-width:1000px;margin:0 auto;padding:1.75rem 2rem 5rem}
-
-/* TOPBAR */
-.topbar{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.5rem;gap:12px;flex-wrap:wrap}
-.topbar-left h2{font-size:22px;font-weight:700;color:var(--text);letter-spacing:-.025em}
-.topbar-left p{font-size:13px;color:var(--text2);margin-top:3px}
-.topbar-acts{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap}
 
 /* BUTTONS */
 .btn{font-size:12px;padding:7px 14px;border-radius:var(--r);border:1px solid var(--brd2);background:var(--bg);color:var(--text);cursor:pointer;display:inline-flex;align-items:center;gap:5px;font-family:var(--font);font-weight:500;transition:background .12s}
@@ -78,6 +66,12 @@ body{font-family:var(--font);font-size:14px;background:var(--bg2);color:var(--te
 .btn.sm{font-size:11px;padding:4px 10px}
 .btn.danger{color:#ef4444;border-color:#fca5a5}
 .btn.danger:hover{background:var(--red-bg)}
+
+/* TOPBAR */
+.topbar{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.5rem;gap:12px;flex-wrap:wrap}
+.topbar-left h2{font-size:22px;font-weight:700;color:var(--text);letter-spacing:-.025em}
+.topbar-left p{font-size:13px;color:var(--text2);margin-top:3px}
+.topbar-acts{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap}
 
 /* STATS */
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-bottom:1.5rem}
@@ -89,10 +83,9 @@ body{font-family:var(--font);font-size:14px;background:var(--bg2);color:var(--te
 
 /* PESSOA TABS */
 .pessoa-tabs{display:flex;gap:6px;margin-bottom:1.25rem;flex-wrap:wrap}
-.pessoa-tab{font-size:12px;padding:6px 16px;border-radius:20px;border:1px solid var(--brd2);background:var(--bg);color:var(--text2);cursor:pointer;font-family:var(--font);font-weight:500;transition:all .12s;display:flex;align-items:center;gap:6px}
-.pessoa-tab:hover{background:var(--bg3);color:var(--text)}
-.pessoa-tab.active{color:#fff;border-color:transparent;font-weight:600}
-.pessoa-tab .dot-p{width:8px;height:8px;border-radius:50%;display:inline-block}
+.pessoa-tab{font-size:12px;padding:7px 18px;border-radius:20px;border:1.5px solid;background:var(--bg);cursor:pointer;font-family:var(--font);font-weight:500;transition:all .15s;display:flex;align-items:center;gap:6px}
+.pessoa-tab .dot-p{width:8px;height:8px;border-radius:50%;display:inline-block;flex-shrink:0}
+.pessoa-tab.loading{opacity:.6}
 
 /* FOCUS */
 .focus-box{background:var(--bg);border:1px solid var(--brd);border-radius:var(--rl);padding:.875rem 1.125rem;margin-bottom:1.5rem}
@@ -100,9 +93,9 @@ body{font-family:var(--font);font-size:14px;background:var(--bg2);color:var(--te
 .focus-box textarea{width:100%;font-size:15px;font-weight:600;background:none;border:none;border-bottom:2px solid var(--brd2);color:var(--text);padding:4px 0;font-family:var(--font);resize:none;min-height:36px;line-height:1.5;overflow:hidden}
 .focus-box textarea:focus{outline:none;border-color:var(--praso)}
 
-/* GROUP HEADER */
-.grp-hdr{display:flex;align-items:center;margin:1.75rem 0 1rem;gap:0}
-.grp-pill{display:flex;align-items:center;gap:8px;padding:.5rem 1.125rem;font-size:13px;font-weight:700;white-space:nowrap;border-radius:var(--rl);flex-shrink:0}
+/* GROUP */
+.grp-hdr{display:flex;align-items:center;margin:1.75rem 0 1rem}
+.grp-pill{padding:.5rem 1.125rem;font-size:13px;font-weight:700;white-space:nowrap;border-radius:var(--rl);flex-shrink:0}
 .grp-pill.m0{background:var(--m0);color:#fff}
 .grp-pill.m1{background:var(--m1);color:#fff}
 .grp-pill.crit{background:#ef4444;color:#fff}
@@ -114,7 +107,7 @@ body{font-family:var(--font);font-size:14px;background:var(--bg2);color:var(--te
 .sec-card-hdr{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.125rem;border-bottom:1px solid var(--brd)}
 .sec-card-hdr.m0{border-left:4px solid var(--m0);background:var(--m0-bg)}
 .sec-card-hdr.m1{border-left:4px solid var(--m1);background:var(--m1-bg)}
-.sec-card-hdr.ka-dif{border-left:4px solid #ef4444;background:#FEF2F2}
+.sec-card-hdr.kad{border-left:4px solid #ef4444;background:#FEF2F2}
 .sec-card-hdr.neu{border-left:4px solid var(--bg3);background:var(--bg2)}
 .sec-card-title{display:flex;align-items:center;gap:8px}
 .sec-card-title .ttl{font-size:13px;font-weight:700;color:var(--text)}
@@ -130,7 +123,7 @@ body{font-family:var(--font);font-size:14px;background:var(--bg2);color:var(--te
 .badge-m3{background:var(--purple-bg);color:var(--purple-txt)}
 .badge-m1{background:var(--m1-bg);color:var(--m1-txt);border:1px solid var(--m1-brd)}
 
-/* SORT BAR */
+/* SORT */
 .sort-bar{display:flex;align-items:center;gap:6px;padding:4px 0 8px;flex-wrap:wrap}
 .sort-bar label{font-size:11px;color:var(--text3);font-weight:500}
 .sort-btn{font-size:11px;padding:3px 10px;border-radius:20px;border:1px solid var(--brd2);background:var(--bg2);color:var(--text2);cursor:pointer;font-family:var(--font)}
@@ -150,7 +143,7 @@ table.ct tr:last-child td{border-bottom:none}
 table.ct input,table.ct select,table.ct textarea{font-size:12px;padding:4px 7px;border-radius:5px;border:1px solid var(--brd);background:var(--bg);color:var(--text);width:100%;font-family:var(--font)}
 table.ct input:focus,table.ct select:focus,table.ct textarea:focus{outline:none;border-color:var(--praso)}
 table.ct textarea{resize:vertical;min-height:38px;line-height:1.5}
-.cli-nome-c{font-size:13px;font-weight:700;color:var(--text);line-height:1.4}
+.cli-nome{font-size:13px;font-weight:700;color:var(--text);line-height:1.4}
 .vbadge{font-size:11px;padding:2px 8px;border-radius:20px;font-weight:600;display:inline-block;white-space:nowrap}
 .btn-del{background:none;border:none;cursor:pointer;color:var(--text3);font-size:14px;padding:3px 5px;border-radius:4px}
 .btn-del:hover{color:#ef4444;background:var(--red-bg)}
@@ -180,7 +173,7 @@ table.ct textarea{resize:vertical;min-height:38px;line-height:1.5}
 .sec-total .lbl{font-size:11px;color:var(--text3);margin-right:8px;font-weight:500}
 .sec-total .val{font-size:14px;font-weight:700;color:var(--text)}
 
-/* DIF CARDS */
+/* DIF */
 .dif-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
 .dif-card{background:var(--bg);border:1px solid #fca5a5;border-left:4px solid #ef4444;border-radius:var(--rl);padding:.875rem 1rem;cursor:pointer;transition:background .12s}
 .dif-card:hover{background:#FEF2F2}
@@ -200,27 +193,26 @@ table.ct textarea{resize:vertical;min-height:38px;line-height:1.5}
 .ta-box textarea{width:100%;font-size:13px;padding:10px 12px;border-radius:var(--r);border:1px solid var(--brd);background:var(--bg2);color:var(--text);resize:vertical;min-height:90px;font-family:var(--font);line-height:1.6}
 .ta-box textarea:focus{outline:none;border-color:var(--praso);background:var(--bg)}
 
-/* VISÃO CONSOLIDADA */
-.filter-bar{display:flex;align-items:center;gap:8px;margin-bottom:1.25rem;flex-wrap:wrap}
+/* VISÃO */
+.filter-bar{display:flex;align-items:center;gap:8px;margin-bottom:1rem;flex-wrap:wrap}
 .filter-bar label{font-size:12px;font-weight:600;color:var(--text2)}
-.filter-chip{font-size:12px;padding:5px 14px;border-radius:20px;border:1px solid var(--brd2);background:var(--bg2);color:var(--text2);cursor:pointer;font-family:var(--font);transition:all .12s}
-.filter-chip:hover{background:var(--bg3)}
-.filter-chip.active{background:var(--praso);color:#fff;border-color:var(--praso);font-weight:600}
-.visao-sec{background:var(--bg);border-radius:var(--rl);border:1px solid var(--brd);margin-bottom:16px;overflow:hidden}
-.visao-sec-hdr{padding:.75rem 1.125rem;border-bottom:1px solid var(--brd);display:flex;align-items:center;justify-content:space-between}
-.visao-sec-hdr.m0{border-left:4px solid var(--m0);background:var(--m0-bg)}
-.visao-sec-hdr.m1{border-left:4px solid var(--m1);background:var(--m1-bg)}
-.visao-sec-hdr.crit{border-left:4px solid #ef4444;background:#FEF2F2}
-.visao-sec-hdr.acord{border-left:4px solid #22c55e;background:var(--green-bg)}
-.visao-ttl{font-size:13px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:8px}
-.visao-table{width:100%;border-collapse:collapse;min-width:600px}
-.visao-table th{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);text-align:left;padding:6px 10px;border-bottom:1px solid var(--brd)}
-.visao-table td{padding:8px 10px;border-bottom:1px solid var(--brd);font-size:12px;vertical-align:middle}
-.visao-table tr:last-child td{border-bottom:none}
-.visao-table tr:hover td{background:var(--bg2)}
-.cobrador-badge{font-size:10px;padding:2px 8px;border-radius:20px;font-weight:600;display:inline-block;white-space:nowrap}
-.semana-tag{font-size:10px;color:var(--text3);display:block;margin-top:2px}
-.empty-visao{text-align:center;padding:2rem;color:var(--text3);font-size:13px}
+.fchip{font-size:12px;padding:5px 14px;border-radius:20px;border:1px solid var(--brd2);background:var(--bg2);color:var(--text2);cursor:pointer;font-family:var(--font);transition:all .12s}
+.fchip:hover{background:var(--bg3)}
+.fchip.active{background:var(--praso);color:#fff;border-color:var(--praso);font-weight:600}
+.vsec{background:var(--bg);border-radius:var(--rl);border:1px solid var(--brd);margin-bottom:16px;overflow:hidden}
+.vsec-hdr{padding:.75rem 1.125rem;border-bottom:1px solid var(--brd);display:flex;align-items:center;justify-content:space-between}
+.vsec-hdr.m0{border-left:4px solid var(--m0);background:var(--m0-bg)}
+.vsec-hdr.m1{border-left:4px solid var(--m1);background:var(--m1-bg)}
+.vsec-hdr.crit{border-left:4px solid #ef4444;background:#FEF2F2}
+.vsec-hdr.acord{border-left:4px solid #22c55e;background:var(--green-bg)}
+.vttl{font-size:13px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:8px}
+.vtable{width:100%;border-collapse:collapse;min-width:580px}
+.vtable th{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);text-align:left;padding:6px 10px;border-bottom:1px solid var(--brd)}
+.vtable td{padding:8px 10px;border-bottom:1px solid var(--brd);font-size:12px;vertical-align:middle}
+.vtable tr:last-child td{border-bottom:none}
+.vtable tr:hover td{background:var(--bg2)}
+.cbadge{font-size:10px;padding:2px 8px;border-radius:20px;font-weight:600;display:inline-block;white-space:nowrap}
+.empty-v{text-align:center;padding:2rem;color:var(--text3);font-size:13px}
 
 /* MODAL */
 .modal-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.28);z-index:200;align-items:center;justify-content:center}
@@ -231,21 +223,19 @@ table.ct textarea{resize:vertical;min-height:38px;line-height:1.5}
 .modal input,.modal select{width:100%;font-size:13px;padding:8px 10px;border-radius:var(--r);border:1px solid var(--brd2);background:var(--bg2);color:var(--text);font-family:var(--font);margin-bottom:1rem}
 .modal input:focus,.modal select:focus{outline:none;border-color:var(--praso);background:var(--bg)}
 .modal-acts{display:flex;gap:8px;justify-content:flex-end}
-.week-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1rem}
-.week-chip{font-size:12px;padding:5px 12px;border-radius:20px;border:1px solid var(--brd2);background:var(--bg2);color:var(--text2);cursor:pointer;font-family:var(--font)}
-.week-chip:hover,.week-chip.selected{background:var(--praso);color:#fff;border-color:var(--praso)}
+.wchips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1rem}
+.wchip{font-size:12px;padding:5px 12px;border-radius:20px;border:1px solid var(--brd2);background:var(--bg2);color:var(--text2);cursor:pointer;font-family:var(--font)}
+.wchip:hover,.wchip.sel{background:var(--praso);color:#fff;border-color:var(--praso)}
 
-/* EMPTY */
+/* EMPTY / TOAST */
 .empty{text-align:center;padding:5rem 1rem;color:var(--text2)}
 .empty .ico{font-size:44px;margin-bottom:1rem;opacity:.3;display:block}
 .empty p{font-size:14px;margin-bottom:1.25rem}
-
-/* TOAST */
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#16171A;color:#fff;font-size:12px;font-weight:500;padding:9px 20px;border-radius:20px;opacity:0;transition:opacity .22s;pointer-events:none;z-index:999;white-space:nowrap;box-shadow:0 4px 16px rgba(0,0,0,.18)}
 .toast.show{opacity:1}
 
 @media(max-width:680px){.sidebar{display:none}.main-inner{padding:1rem 1rem 4rem}}
-@media print{.sidebar,.topbar-acts,.btn,.btn-del,.btn-new-wk-sm,.wk-btn,.sort-bar,.st-add-btn,.pessoa-tabs{display:none!important}.shell{display:block}.main{overflow:visible;background:#fff}.main-inner{max-width:100%;padding:1rem}.sec-card{break-inside:avoid}}
+@media print{.sidebar,.topbar-acts,.btn,.btn-del,.btn-new-wk,.sort-bar,.st-add-btn,.pessoa-tabs{display:none!important}.shell{display:block}.main{overflow:visible;background:#fff}.main-inner{max-width:100%;padding:1rem}.sec-card{break-inside:avoid}}
 </style>
 </head>
 <body>
@@ -256,20 +246,17 @@ table.ct textarea{resize:vertical;min-height:38px;line-height:1.5}
       <div class="sb-logo-txt"><h1>PSC Cobrança</h1><p>Planejamento Semanal · Praso</p></div>
     </div>
     <div class="sb-sec">
-      <div class="sb-sec-lbl">Semanas<button class="btn-nova-sb" onclick="openModal()">+ Nova</button></div>
+      <div class="sb-lbl">Semanas<button class="btn-nova" onclick="openModal()">+ Nova</button></div>
       <div id="sb-weeks"></div>
     </div>
     <div class="sb-visao">
-      <button onclick="showVisao()" style="width:100%;font-size:12px;padding:8px 10px;border-radius:var(--r);border:1px solid var(--praso);background:var(--praso-light);color:var(--praso);cursor:pointer;font-family:var(--font);font-weight:600;text-align:left">
-        📊 Visão Consolidada
-      </button>
+      <button onclick="showVisao()" style="width:100%;font-size:12px;padding:8px 10px;border-radius:var(--r);border:1px solid var(--praso);background:var(--praso-light);color:var(--praso);cursor:pointer;font-family:var(--font);font-weight:600;text-align:left">📊 Visão Consolidada</button>
     </div>
     <div class="sb-footer"><span class="dot" id="dot"></span><span id="sync-txt">Carregando...</span></div>
   </aside>
   <main class="main"><div class="main-inner" id="main"></div></main>
 </div>
 
-<!-- MODAL NOVA SEMANA -->
 <div class="modal-ov" id="modal-ov">
   <div class="modal">
     <h3>Nova semana</h3>
@@ -282,397 +269,358 @@ table.ct textarea{resize:vertical;min-height:38px;line-height:1.5}
     </select>
     <label>Ano</label>
     <input type="number" id="inp-ano" min="2020" max="2040">
-    <label>Selecione a semana de dias úteis</label>
-    <div class="week-chips" id="week-chips"></div>
-    <label>Ou digite manualmente</label>
-    <input type="text" id="inp-semana" placeholder="Ex: 14 a 18/07">
-    <label>Copiar dados de outra semana (opcional)</label>
-    <select id="inp-copy"><option value="">— Começar em branco —</option></select>
+    <label>Semana de dias úteis</label>
+    <div class="wchips" id="wchips"></div>
+    <label>Ou digite</label>
+    <input type="text" id="inp-sem" placeholder="Ex: 14 a 18/07">
     <div class="modal-acts">
       <button class="btn" onclick="closeModal()">Cancelar</button>
-      <button class="btn primary" onclick="criarSemana()">Criar semana</button>
+      <button class="btn primary" onclick="criarSemana()">Criar</button>
     </div>
   </div>
 </div>
 <div class="toast" id="toast"></div>
 
 <script>
-// ── CONFIG ──────────────────────────────────────────────────
-const SUPABASE_URL='https://ejmiucotfaxjnjbbutah.supabase.co';
-const SUPABASE_ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVqbWl1Y290ZmF4am5qYmJ1dGFoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM2MDcyMTgsImV4cCI6MjA5OTE4MzIxOH0.53EaNc5UMVV8jgyWwuk2fe2ugeeUMPT9pyQJLCvgoG4';
-const _sb=supabase.createClient(SUPABASE_URL,SUPABASE_ANON);
+// ══════════════════════════════════════════════════════════════
+// CONFIGURAÇÃO
+// ══════════════════════════════════════════════════════════════
+const SB_URL  = 'https://ejmiucotfaxjnjbbutah.supabase.co';
+const SB_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVqbWl1Y290ZmF4am5qYmJ1dGFoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM2MDcyMTgsImV4cCI6MjA5OTE4MzIxOH0.53EaNc5UMVV8jgyWwuk2fe2ugeeUMPT9pyQJLCvgoG4';
+const _sb     = supabase.createClient(SB_URL, SB_KEY);
 
-// ── CONSTANTES ──────────────────────────────────────────────
-const MESES=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
-const COBRADORES=['Beatriz','Leandra','Gabriela','Flávia'];
-const COBRADOR_COLORS={'Beatriz':'#2D4BDE','Leandra':'#0ea5a0','Gabriela':'#9333ea','Flávia':'#ea580c'};
-const VEND_COLORS=['#2D4BDE','#0ea5a0','#9333ea','#ea580c','#0891b2','#65a30d','#db2777','#d97706','#16a34a','#dc2626'];
-const _vendMap={};let _vendIdx=0;
-function vendorColor(name){
-  if(!name||!name.trim())return'#9B9DA8';
-  const k=name.trim().toLowerCase();
-  if(!_vendMap[k]){_vendMap[k]=VEND_COLORS[_vendIdx%VEND_COLORS.length];_vendIdx++;}
-  return _vendMap[k];
-}
+// ══════════════════════════════════════════════════════════════
+// CONSTANTES
+// ══════════════════════════════════════════════════════════════
+const MESES      = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+const COBRADORES = ['Beatriz','Leandra','Gabriela','Flávia'];
+const COR = {Beatriz:'#2D4BDE', Leandra:'#0ea5a0', Gabriela:'#9333ea', Flávia:'#ea580c'};
+const VCORES = ['#2D4BDE','#0ea5a0','#9333ea','#ea580c','#0891b2','#65a30d','#db2777','#d97706'];
+const _vm={};let _vi=0;
+function vcor(n){if(!n||!n.trim())return'#9B9DA8';const k=n.trim().toLowerCase();if(!_vm[k]){_vm[k]=VCORES[_vi%VCORES.length];_vi++;}return _vm[k];}
+
 const ST=[
-  {v:'base',l:'Entrou na base',c:'p-base'},
-  {v:'promessa',l:'Promessa de pagamento',c:'p-promessa'},
-  {v:'boleto',l:'Boleto atualizado',c:'p-boleto'},
-  {v:'sem-retorno',l:'Sem retorno',c:'p-sem-retorno'},
-  {v:'serasa',l:'Serasa',c:'p-serasa'},
-  {v:'negociacao',l:'Em negociação',c:'p-negociacao'},
-  {v:'sem-exp',l:'Sem expectativa',c:'p-sem-exp'},
-  {v:'outros',l:'Outros',c:'p-outros'},
+  {v:'base',        l:'Entrou na base',        c:'p-base'},
+  {v:'promessa',    l:'Promessa de pagamento', c:'p-promessa'},
+  {v:'boleto',      l:'Boleto atualizado',     c:'p-boleto'},
+  {v:'sem-retorno', l:'Sem retorno',           c:'p-sem-retorno'},
+  {v:'serasa',      l:'Serasa',                c:'p-serasa'},
+  {v:'negociacao',  l:'Em negociação',         c:'p-negociacao'},
+  {v:'sem-exp',     l:'Sem expectativa',       c:'p-sem-exp'},
+  {v:'outros',      l:'Outros',                c:'p-outros'},
 ];
 const SA=[{v:'pagando',l:'Pagando',c:'p-pagando'},{v:'atrasado',l:'Atrasado',c:'p-atrasado'},{v:'encerrado',l:'Encerrado',c:'p-encerrado'}];
 
-// ── STATE ────────────────────────────────────────────────────
-let DB={};
-let curWK=null; // chave da semana atual no banco ex: "2026-07|14 a 18/07"
-let curCobrador='Beatriz'; // cobrador ativo na aba
-let _mode='week'; // 'week' ou 'visao'
-let _editRow=null,_editDif=null,_editAcordo=null;
-let _sortKey={},_sortDir={};
-let _visaoFilter='Todos';
-let _visaoSemana='atual';
-let saveTimer=null;
+// ══════════════════════════════════════════════════════════════
+// ESTADO
+// chave no banco: "Beatriz|2026-07|13/07 a 17/07"
+// DB[cobrador][mk|wk] = dadosDaPessoa
+// ══════════════════════════════════════════════════════════════
+let DB          = {}; // DB[cobrador][semKey] = dados
+let SEMANAS     = {}; // SEMANAS[mk][wk] = true  — índice de semanas existentes
+let curSemKey   = null; // "2026-07|13/07 a 17/07"
+let curCobrador = 'Beatriz';
+let _mode       = 'week';
+let _editRow    = null, _editDif = null, _editAcordo = null;
+let _sortKey    = {}, _sortDir = {};
+let _vFiltro    = 'Todos', _vSemana = 'todas';
+let saveTimer   = null;
 
+// ══════════════════════════════════════════════════════════════
+// HELPERS
+// ══════════════════════════════════════════════════════════════
 function mesKey(m,a){return`${a}-${String(m+1).padStart(2,'0')}`;}
-function wkKey(mk,wk){return mk+'|'+wk;}
+function semKey(mk,wk){return`${mk}|${wk}`;}
+function dbKey(cobrador,mk,wk){return`${cobrador}|${mk}|${wk}`;}
+function parseDbKey(k){const p=k.split('|');return{cobrador:p[0],mk:p[1],wk:p[2]};}
 function setSync(s,t){document.getElementById('dot').className='dot'+(s==='saving'?' saving':s==='err'?' err':'');document.getElementById('sync-txt').textContent=t;}
 function fmtVal(v){return Number(v||0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});}
 function parseVal(s){return parseFloat(String(s).trim().replace(/\./g,'').replace(',','.'))||0;}
 function esc(s){return(s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function selO(opts,sel){return opts.map(o=>`<option value="${o.v}"${o.v===sel?' selected':''}>${o.l}</option>`).join('');}
-function stCls(v,opts){return(opts.find(x=>x.v===v)||opts[opts.length-1]).c;}
-function stLbl(v,opts){return(opts.find(x=>x.v===v)||opts[opts.length-1]).l;}
+function stCls(v,o){return(o.find(x=>x.v===v)||o[o.length-1]).c;}
+function stLbl(v,o){return(o.find(x=>x.v===v)||o[o.length-1]).l;}
 function normSt(c){if(!c.tags){c.tags=c.st?[c.st]:[];}return c;}
 function stTags(tags){return(tags||[]).map(v=>{const o=ST.find(x=>x.v===v)||ST[ST.length-1];return`<span class="pill ${o.c}">${o.l}</span>`;}).join(' ');}
 function autoResize(el){el.style.height='auto';el.style.height=el.scrollHeight+'px';}
 function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
+function defPessoa(){return{foco:'',obs:'',m3:'',kaD:[],m0ka:[],m0nka:[],m1ka:[],m1nka:[],acordos:[]};}
 
-// ── ESTRUTURA DE DADOS ────────────────────────────────────────
-// DB[wkKey] = { semana, mk, wk, Beatriz:{foco,obs,m3,kaD,m0ka,m0nka,m1ka,m1nka,acordos}, Leandra:{...}, ... }
-function defPessoa(){
-  return{foco:'',obs:'',m3:'',kaD:[],m0ka:[],m0nka:[],m1ka:[],m1nka:[],acordos:[]};
+// ══════════════════════════════════════════════════════════════
+// SUPABASE — UMA LINHA POR COBRADOR POR SEMANA
+// chave primária: "Beatriz|2026-07|13/07 a 17/07"
+// ══════════════════════════════════════════════════════════════
+async function sbGet(){
+  try{
+    const {data,error}=await _sb.from('psc_data').select('mk,value');
+    if(error)throw error;
+    return data||[];
+  }catch(e){console.warn('sbGet:',e.message);return[];}
 }
-function defWeek(mk,wk){
-  const d={mk,wk};
-  COBRADORES.forEach(p=>{d[p]=defPessoa();});
-  return d;
+
+async function sbSave(cobrador, mk, wk, value){
+  const key=dbKey(cobrador,mk,wk);
+  try{
+    const {error}=await _sb.from('psc_data').upsert(
+      {mk:key, value:value, updated_at:new Date().toISOString()},
+      {onConflict:'mk'}
+    );
+    if(error)throw error;
+    return true;
+  }catch(e){console.warn('sbSave:',e.message);return false;}
 }
-function getCurData(){return DB[curWK]||null;}
-function getCurPessoa(){const d=getCurData();return d?d[curCobrador]:null;}
-function patchPessoa(fn){
-  if(!DB[curWK])return;
-  if(!DB[curWK][curCobrador])DB[curWK][curCobrador]=defPessoa();
-  fn(DB[curWK][curCobrador]);
+
+async function sbDelSemana(mk,wk){
+  // Deletar todas as linhas de todos os cobradores para essa semana
+  try{
+    for(const c of COBRADORES){
+      await _sb.from('psc_data').delete().eq('mk',dbKey(c,mk,wk));
+    }
+  }catch(e){console.warn('sbDel:',e.message);}
+}
+
+// ══════════════════════════════════════════════════════════════
+// CACHE LOCAL — apenas para leitura rápida, nunca para salvar
+// ══════════════════════════════════════════════════════════════
+function cacheLoad(){
+  try{const d=localStorage.getItem('psc_cache');return d?JSON.parse(d):null;}catch(_){return null;}
+}
+function cacheSave(){
+  try{localStorage.setItem('psc_cache',JSON.stringify({DB,SEMANAS}));}catch(_){}
+}
+
+// ══════════════════════════════════════════════════════════════
+// CARREGAR TODOS OS DADOS
+// ══════════════════════════════════════════════════════════════
+async function loadAll(){
+  const rows=await sbGet();
+  DB={};SEMANAS={};
+  rows.forEach(row=>{
+    const k=row.mk;
+    // Tentar novo formato: "Cobrador|2026-07|wk"
+    const parts=k.split('|');
+    if(parts.length===3){
+      const [cobrador,mk,wk]=parts;
+      if(COBRADORES.includes(cobrador)){
+        if(!DB[cobrador])DB[cobrador]={};
+        DB[cobrador][semKey(mk,wk)]=row.value||defPessoa();
+        if(!SEMANAS[mk])SEMANAS[mk]={};
+        SEMANAS[mk][wk]=true;
+        return;
+      }
+    }
+    // Formato antigo "2026-07|wk" — ignorar, dados migrados
+    // Formato muito antigo "2026-07" — ignorar
+  });
+  cacheSave();
+}
+
+// ══════════════════════════════════════════════════════════════
+// DADOS DO COBRADOR ATUAL
+// ══════════════════════════════════════════════════════════════
+function getCurData(){
+  if(!curSemKey)return null;
+  if(!DB[curCobrador])DB[curCobrador]={};
+  if(!DB[curCobrador][curSemKey])DB[curCobrador][curSemKey]=defPessoa();
+  return DB[curCobrador][curSemKey];
+}
+
+function patch(fn){
+  const d=getCurData();
+  fn(d);
   scheduleSave();
 }
 
-// ── CLOUD ────────────────────────────────────────────────────
-async function cloudGet(){
-  let cached={};
-  try{const lc=localStorage.getItem('psc_v4');if(lc)cached=JSON.parse(lc);}catch(_){}
-  try{
-    const {data,error}=await _sb.from('psc_data').select('mk,value').order('mk');
-    if(!error&&data&&data.length>0){
-      const result={};
-      data.forEach(row=>{
-        // mk tem formato "2026-07|14 a 18/07"
-        result[row.mk]=row.value;
-      });
-      try{localStorage.setItem('psc_v4',JSON.stringify(result));}catch(_){}
-      return result;
-    }
-    if(error)console.warn('get error:',error.message);
-  }catch(e){console.warn('get:',e.message);}
-  if(Object.keys(cached).length>0){setSync('err','Cache local');return cached;}
-  return{};
-}
-
-async function cloudSave(key,val){
-  try{localStorage.setItem('psc_v4',JSON.stringify(DB));}catch(_){}
-  try{
-    const {error}=await _sb.from('psc_data').upsert({mk:key,value:val,updated_at:new Date().toISOString()},{onConflict:'mk'});
-    if(error){console.warn('save error:',error.message);return false;}
-    return true;
-  }catch(e){console.warn('save:',e.message);return false;}
-}
-
-async function cloudDel(key){
-  try{
-    await _sb.from('psc_data').delete().eq('mk',key);
-  }catch(e){console.warn('del:',e.message);}
-}
-
+// ══════════════════════════════════════════════════════════════
+// SALVAR — APENAS O COBRADOR ATUAL, APENAS A SEMANA ATUAL
+// ══════════════════════════════════════════════════════════════
 function scheduleSave(){
   setSync('saving','Salvando...');
   clearTimeout(saveTimer);
   saveTimer=setTimeout(async()=>{
-    if(!curWK||!DB[curWK])return;
-    // Buscar versão mais recente do servidor e mesclar
-    // para não sobrescrever dados de outras cobradora
-    try{
-      const {data,error}=await _sb.from('psc_data').select('value').eq('mk',curWK).single();
-      if(!error&&data&&data.value){
-        const serverVal=data.value;
-        // Mesclar: manter dados do servidor para outras cobradoras
-        // e usar dados locais apenas para a cobradoras atual
-        COBRADORES.forEach(p=>{
-          if(p!==curCobrador&&serverVal[p]){
-            DB[curWK][p]=serverVal[p];
-          }
-        });
-      }
-    }catch(e){console.warn('merge fetch:',e);}
-    const ok=await cloudSave(curWK,DB[curWK]);
-    setSync(ok?'ok':'err',ok?'Salvo · compartilhado ✓':'Salvo localmente');
+    if(!curSemKey)return;
+    const parts=curSemKey.split('|');
+    const mk=parts[0], wk=parts[1];
+    const data=getCurData();
+    const ok=await sbSave(curCobrador,mk,wk,data);
+    cacheSave();
+    setSync(ok?'ok':'err', ok?`Salvo · ${curCobrador} ✓`:'Erro ao salvar');
     if(ok)showToast('Salvo!');
-  },1000);
+  },800);
 }
 
-// ── SEMANAS ÚTEIS ─────────────────────────────────────────────
-function getWeeksOfMonth(month,year){
-  const weeks=[];
-  const d=new Date(year,month,1);
+// ══════════════════════════════════════════════════════════════
+// SEMANAS ÚTEIS
+// ══════════════════════════════════════════════════════════════
+function weeksOfMonth(m,y){
+  const weeks=[];const d=new Date(y,m,1);
   while(d.getDay()!==1)d.setDate(d.getDate()+1);
-  while(d.getMonth()===month){
-    const s=new Date(d),e=new Date(d);
-    e.setDate(e.getDate()+4);
-    const fmt=dt=>`${String(dt.getDate()).padStart(2,'0')}/${String(dt.getMonth()+1).padStart(2,'0')}`;
-    weeks.push(`${fmt(s)} a ${fmt(e)}`);
-    d.setDate(d.getDate()+7);
+  while(d.getMonth()===m){
+    const s=new Date(d),e=new Date(d);e.setDate(e.getDate()+4);
+    const f=dt=>`${String(dt.getDate()).padStart(2,'0')}/${String(dt.getMonth()+1).padStart(2,'0')}`;
+    weeks.push(`${f(s)} a ${f(e)}`);d.setDate(d.getDate()+7);
   }
   return weeks;
 }
-
-function getCurrentWeekStr(){
-  const hoje=new Date();
-  const day=hoje.getDay();
-  const diff=hoje.getDate()-(day===0?6:day-1);
-  const seg=new Date(hoje);seg.setDate(diff);
-  const sex=new Date(seg);sex.setDate(seg.getDate()+4);
-  const fmt=dt=>`${String(dt.getDate()).padStart(2,'0')}/${String(dt.getMonth()+1).padStart(2,'0')}`;
-  return`${fmt(seg)} a ${fmt(sex)}`;
+function curWeekStr(){
+  const h=new Date(),day=h.getDay(),diff=h.getDate()-(day===0?6:day-1);
+  const s=new Date(h);s.setDate(diff);const e=new Date(s);e.setDate(s.getDate()+4);
+  const f=dt=>`${String(dt.getDate()).padStart(2,'0')}/${String(dt.getMonth()+1).padStart(2,'0')}`;
+  return`${f(s)} a ${f(e)}`;
 }
 
-// ── SIDEBAR ───────────────────────────────────────────────────
+// ══════════════════════════════════════════════════════════════
+// SIDEBAR
+// ══════════════════════════════════════════════════════════════
 function renderSB(){
-  // Agrupar por mês
-  const byMonth={};
-  Object.keys(DB).sort().forEach(k=>{
-    const parts=k.split('|');
-    if(parts.length!==2)return;
-    const [mk,wk]=parts;
-    if(!byMonth[mk])byMonth[mk]=[];
-    byMonth[mk].push({k,wk});
-  });
-
-  const months=Object.keys(byMonth).sort();
+  const mks=Object.keys(SEMANAS).sort();
   const el=document.getElementById('sb-weeks');
-  if(!months.length){
-    el.innerHTML='<p style="font-size:11px;color:var(--text3);padding:4px 0 8px">Nenhuma semana. Clique em "+ Nova".</p>';
-    return;
-  }
-
-  el.innerHTML=months.map(mk=>{
+  if(!mks.length){el.innerHTML='<p style="font-size:11px;color:var(--text3);padding:4px 0 8px">Nenhuma semana. Clique em "+ Nova".</p>';return;}
+  el.innerHTML=mks.map(mk=>{
     const[y,m]=mk.split('-');
     const lbl=MESES[parseInt(m)-1]+' '+y;
-    const weeks=byMonth[mk].sort((a,b)=>{
-      const da=a.wk.match(/\d+/),db=b.wk.match(/\d+/);
-      return da&&db?parseInt(da[0])-parseInt(db[0]):0;
-    });
-    const isOpen=weeks.some(w=>w.k===curWK);
+    const wks=Object.keys(SEMANAS[mk]).sort((a,b)=>{const da=a.match(/\d+/),db=b.match(/\d+/);return da&&db?parseInt(da[0])-parseInt(db[0]):0;});
+    const sk=semKey(mk,wks[0]);
+    const isOpen=wks.some(wk=>semKey(mk,wk)===curSemKey);
     return`<div class="sb-month">
       <div class="sb-month-name${isOpen?' open':''}" onclick="toggleM(this,'${mk}')">
-        <span>${lbl}</span><span class="arr">›</span>
+        <span style="font-size:12px;font-weight:700;color:var(--text2)">${lbl}</span><span class="arr">›</span>
       </div>
       <div id="swk-${mk}" style="${isOpen?'':'display:none'}">
-        ${weeks.map(({k,wk})=>`
-          <div class="wk-item${k===curWK?' active':''}" onclick="selWeek('${k}')">
-            <div style="flex:1;min-width:0">
-              <span class="wk-item-label">${wk}</span>
-            </div>
-            <span class="wk-actions">
-              <button class="wk-btn del" title="Excluir" onclick="event.stopPropagation();delWeek('${k}')">✕</button>
-            </span>
-          </div>`).join('')}
-        <button class="btn-new-wk-sm" onclick="openModalFor('${mk}')">+ Nova semana</button>
+        ${wks.map(wk=>{
+          const k=semKey(mk,wk);
+          return`<div class="wk-item${k===curSemKey?' active':''}" onclick="selSem('${mk}','${wk}')">
+            <span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${wk}</span>
+            <button class="wk-del" onclick="event.stopPropagation();delSem('${mk}','${wk}')">✕</button>
+          </div>`;
+        }).join('')}
+        <button class="btn-new-wk" onclick="openModalFor('${mk}')">+ Nova semana</button>
       </div>
     </div>`;
   }).join('');
 }
 
-function toggleM(el,mk){
-  const sub=document.getElementById('swk-'+mk);
-  const open=sub.style.display!=='none';
-  sub.style.display=open?'none':'block';
-  el.classList.toggle('open',!open);
-}
+function toggleM(el,mk){const sub=document.getElementById('swk-'+mk);const open=sub.style.display!=='none';sub.style.display=open?'none':'block';el.classList.toggle('open',!open);}
 
-function selWeek(k){
-  curWK=k;_mode='week';_editRow=null;_editDif=null;_editAcordo=null;
-  localStorage.setItem('psc_lastWK',k);
+function selSem(mk,wk){
+  curSemKey=semKey(mk,wk);_mode='week';_editRow=null;_editDif=null;_editAcordo=null;
+  localStorage.setItem('psc_lastSem',curSemKey);
+  localStorage.setItem('psc_lastCob',curCobrador);
   renderSB();renderMain();
 }
 
-async function delWeek(k){
-  if(!confirm(`Excluir esta semana? Todos os dados de todas as pessoas serão perdidos.`))return;
-  await cloudDel(k);
-  delete DB[k];
-  try{localStorage.setItem('psc_v4',JSON.stringify(DB));}catch(_){}
-  if(curWK===k){
-    const keys=Object.keys(DB);
-    curWK=keys.length?keys[keys.length-1]:null;
+async function delSem(mk,wk){
+  if(!confirm(`Excluir a semana "${wk}"?\nTodos os dados de todas as cobradoras serão perdidos.`))return;
+  await sbDelSemana(mk,wk);
+  delete SEMANAS[mk][wk];
+  if(!Object.keys(SEMANAS[mk]).length)delete SEMANAS[mk];
+  COBRADORES.forEach(c=>{if(DB[c])delete DB[c][semKey(mk,wk)];});
+  cacheSave();
+  if(curSemKey===semKey(mk,wk)){
+    const mks=Object.keys(SEMANAS);
+    if(mks.length){const lastMk=mks[mks.length-1];const wks=Object.keys(SEMANAS[lastMk]);curSemKey=wks.length?semKey(lastMk,wks[0]):null;}
+    else curSemKey=null;
   }
   renderSB();renderMain();showToast('Semana excluída');
 }
 
-// ── MODAL ─────────────────────────────────────────────────────
+// ══════════════════════════════════════════════════════════════
+// MODAL
+// ══════════════════════════════════════════════════════════════
 let _modalMK=null;
 function updateChips(){
   const mes=parseInt(document.getElementById('inp-mes').value);
   const ano=parseInt(document.getElementById('inp-ano').value);
-  const weeks=getWeeksOfMonth(mes,ano);
-  document.getElementById('week-chips').innerHTML=weeks.map(w=>
-    `<span class="week-chip" onclick="selectChip(this,'${w}')">${w}</span>`
-  ).join('');
-  // popular cópia
-  const cp=document.getElementById('inp-copy');
-  cp.innerHTML='<option value="">— Começar em branco —</option>';
-  Object.keys(DB).sort().forEach(k=>{
-    const parts=k.split('|');if(parts.length!==2)return;
-    const[mk,wk]=parts;const[y,m]=mk.split('-');
-    cp.innerHTML+=`<option value="${k}">${MESES[parseInt(m)-1]} ${y} · ${wk}</option>`;
-  });
+  const wks=weeksOfMonth(mes,ano);
+  document.getElementById('wchips').innerHTML=wks.map(w=>`<span class="wchip" onclick="selChip(this,'${w}')">${w}</span>`).join('');
 }
-function selectChip(el,val){
-  document.querySelectorAll('.week-chip').forEach(c=>c.classList.remove('selected'));
-  el.classList.add('selected');
-  document.getElementById('inp-semana').value=val;
-}
-function openModal(){
-  _modalMK=null;
-  const h=new Date();
-  document.getElementById('inp-mes').value=h.getMonth();
-  document.getElementById('inp-ano').value=h.getFullYear();
-  document.getElementById('inp-semana').value='';
-  updateChips();
-  document.getElementById('modal-ov').classList.add('open');
-  setTimeout(()=>document.getElementById('inp-semana').focus(),60);
-}
-function openModalFor(mk){
-  _modalMK=mk;
-  const[y,m]=mk.split('-');
-  document.getElementById('inp-mes').value=parseInt(m)-1;
-  document.getElementById('inp-ano').value=y;
-  document.getElementById('inp-semana').value='';
-  updateChips();
-  document.getElementById('modal-ov').classList.add('open');
-}
+function selChip(el,v){document.querySelectorAll('.wchip').forEach(c=>c.classList.remove('sel'));el.classList.add('sel');document.getElementById('inp-sem').value=v;}
+function openModal(){_modalMK=null;const h=new Date();document.getElementById('inp-mes').value=h.getMonth();document.getElementById('inp-ano').value=h.getFullYear();document.getElementById('inp-sem').value='';updateChips();document.getElementById('modal-ov').classList.add('open');}
+function openModalFor(mk){_modalMK=mk;const[y,m]=mk.split('-');document.getElementById('inp-mes').value=parseInt(m)-1;document.getElementById('inp-ano').value=y;document.getElementById('inp-sem').value='';updateChips();document.getElementById('modal-ov').classList.add('open');}
 function closeModal(){document.getElementById('modal-ov').classList.remove('open');}
 document.getElementById('modal-ov').addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 document.getElementById('inp-mes').addEventListener('change',updateChips);
 document.getElementById('inp-ano').addEventListener('change',updateChips);
-document.getElementById('inp-semana').addEventListener('keydown',e=>{if(e.key==='Enter')criarSemana();});
+document.getElementById('inp-sem').addEventListener('keydown',e=>{if(e.key==='Enter')criarSemana();});
 
 async function criarSemana(){
-  const sem=document.getElementById('inp-semana').value.trim();
-  if(!sem){alert('Selecione ou digite o intervalo da semana.');return;}
+  const sem=document.getElementById('inp-sem').value.trim();
+  if(!sem){alert('Selecione ou digite a semana.');return;}
   const mes=parseInt(document.getElementById('inp-mes').value);
   const ano=parseInt(document.getElementById('inp-ano').value);
   const mk=_modalMK||mesKey(mes,ano);
-  const key=wkKey(mk,sem);
-  if(DB[key]){alert('Esta semana já existe.');return;}
-
-  const copyFrom=document.getElementById('inp-copy').value;
-  if(copyFrom&&DB[copyFrom]){
-    DB[key]=JSON.parse(JSON.stringify(DB[copyFrom]));
-    DB[key].mk=mk;DB[key].wk=sem;
-    showToast('Dados copiados!');
-  } else {
-    DB[key]=defWeek(mk,sem);
+  if(SEMANAS[mk]&&SEMANAS[mk][sem]){alert('Esta semana já existe.');return;}
+  if(!SEMANAS[mk])SEMANAS[mk]={};
+  SEMANAS[mk][sem]=true;
+  curSemKey=semKey(mk,sem);_mode='week';
+  localStorage.setItem('psc_lastSem',curSemKey);
+  // Criar entradas vazias para todos os cobradores
+  setSync('saving','Criando semana...');
+  for(const c of COBRADORES){
+    if(!DB[c])DB[c]={};
+    DB[c][curSemKey]=defPessoa();
+    await sbSave(c,mk,sem,defPessoa());
   }
-
-  setSync('saving','Criando...');
-  const ok=await cloudSave(key,DB[key]);
-  setSync(ok?'ok':'err',ok?'Salvo · compartilhado ✓':'Salvo localmente');
-  curWK=key;_mode='week';
-  localStorage.setItem('psc_lastWK',key);
-  closeModal();renderSB();renderMain();showToast('Semana criada!');
+  setSync('ok','Semana criada ✓');
+  cacheSave();closeModal();renderSB();renderMain();showToast('Semana criada!');
 }
 
-// ── MAIN RENDER ───────────────────────────────────────────────
+// ══════════════════════════════════════════════════════════════
+// MAIN RENDER
+// ══════════════════════════════════════════════════════════════
 function renderMain(){
   if(_mode==='visao'){renderVisao();return;}
   const mc=document.getElementById('main');
-  if(!curWK||!DB[curWK]){
-    mc.innerHTML=`<div class="empty"><span class="ico">📋</span>
-      <p style="font-weight:600;font-size:16px">Selecione ou crie uma semana</p>
-      <p style="font-size:13px;color:var(--text3);margin-top:6px;margin-bottom:20px">Use a barra lateral ou clique em "+ Nova"</p>
-      <button class="btn primary" onclick="openModal()">+ Nova semana</button>
-    </div>`;
+  if(!curSemKey){
+    mc.innerHTML=`<div class="empty"><span class="ico">📋</span><p style="font-weight:600;font-size:16px">Selecione ou crie uma semana</p><button class="btn primary" style="margin-top:1rem" onclick="openModal()">+ Nova semana</button></div>`;
     return;
   }
-  const d=DB[curWK];
-  const parts=curWK.split('|');
-  const[mk,wk]=parts;
+  const parts=curSemKey.split('|');
+  const mk=parts[0],wk=parts[1];
   const[y,m]=mk.split('-');
+  const pd=getCurData();
 
-  // Tabs de cobrador
+  // Tabs de cobrador com indicador de carregamento
   const tabs=COBRADORES.map(p=>{
-    const cor=COBRADOR_COLORS[p]||'#9B9DA8';
+    const cor=COR[p]||'#9B9DA8';
     const ativo=p===curCobrador;
     return`<button class="pessoa-tab${ativo?' active':''}" 
-      style="${ativo?`background:${cor};border-color:${cor}`:'border-color:'+cor+';color:'+cor}"
-      onclick="selCobrador('${p}')">
+      style="border-color:${cor};${ativo?`background:${cor};color:#fff`:`color:${cor}`}"
+      onclick="selCob('${p}')">
       <span class="dot-p" style="background:${cor}"></span>${p}
     </button>`;
   }).join('');
 
-  const pd=d[curCobrador]||defPessoa();
-
   mc.innerHTML=`
     <div class="topbar">
-      <div class="topbar-left">
-        <h2>${wk}</h2>
-        <p>${MESES[parseInt(m)-1]} ${y} · Planejamento Semanal de Cobrança</p>
-      </div>
+      <div class="topbar-left"><h2>${wk}</h2><p>${MESES[parseInt(m)-1]} ${y} · ${curCobrador}</p></div>
       <div class="topbar-acts">
         <button class="btn" onclick="copiar()">⎘ Copiar resumo</button>
         <button class="btn" onclick="window.print()">🖨 Imprimir</button>
       </div>
     </div>
-
     <div class="pessoa-tabs">${tabs}</div>
-
     <div class="stats" id="stats-box"></div>
-
     <div class="focus-box">
-      <label>Foco principal da semana · ${curCobrador}</label>
-      <textarea id="inp-foco" rows="1" placeholder="Descreva o foco principal..."
-        oninput="autoResize(this);patchPessoa(d=>{d.foco=this.value})">${esc(pd.foco)}</textarea>
+      <label>Foco principal · ${curCobrador}</label>
+      <textarea id="inp-foco" rows="1" placeholder="Descreva o foco..."
+        oninput="autoResize(this);patch(d=>{d.foco=this.value})">${esc(pd.foco)}</textarea>
     </div>
-
     <div class="grp-hdr"><div class="grp-pill m0">M0 · Maiores Clientes</div><div class="grp-line"></div></div>
-    ${secCard('m0ka','Key Account','KA','badge-ka','maiores clientes M0 com vendedor KA','m0')}
-    ${secCard('m0nka','Não Key Account','Não KA','badge-nka','maiores clientes M0 sem vendedor KA','m0')}
-
+    ${card('m0ka','Key Account','KA','badge-ka','maiores clientes M0 com vendedor KA','m0')}
+    ${card('m0nka','Não Key Account','Não KA','badge-nka','maiores clientes M0 sem vendedor KA','m0')}
     <div class="grp-hdr"><div class="grp-pill m1">M1/M2 · Maiores Clientes</div><div class="grp-line"></div></div>
-    ${secCard('m1ka','Key Account','KA','badge-m1','maiores clientes M1/M2 com vendedor KA','m1')}
-    ${secCard('m1nka','Não Key Account','Não KA','badge-nka','maiores clientes M1/M2 sem vendedor KA','m1')}
-
+    ${card('m1ka','Key Account','KA','badge-m1','maiores clientes M1/M2 com vendedor KA','m1')}
+    ${card('m1nka','Não Key Account','Não KA','badge-nka','maiores clientes M1/M2 sem vendedor KA','m1')}
     <div class="grp-hdr"><div class="grp-pill crit">⚠ KA com Dificuldade</div><div class="grp-line"></div></div>
     <div class="sec-card">
-      <div class="sec-card-hdr ka-dif">
+      <div class="sec-card-hdr kad">
         <div class="sec-card-title"><span class="ttl">Clientes KA em situação crítica</span><span class="badge badge-dif">Atenção</span></div>
         <button class="btn sm" onclick="addDif()">+ Adicionar</button>
       </div>
       <div class="sec-card-body"><div class="dif-grid" id="dif-grid"></div></div>
     </div>
-
     <div class="grp-hdr"><div class="grp-pill info">Acordos e Base M3</div><div class="grp-line"></div></div>
     <div class="sec-card">
       <div class="sec-card-hdr neu">
@@ -682,59 +630,41 @@ function renderMain(){
       <div class="sec-card-body"><div class="acord-grid" id="acord-grid"></div></div>
     </div>
     <div class="sec-card">
-      <div class="sec-card-hdr neu"><div class="sec-card-title"><span class="ttl">Andamento da Base M3</span><span class="badge badge-m3">M3</span></div></div>
-      <div class="sec-card-body"><div class="ta-box">
-        <label>Observações gerais sobre o M3</label>
-        <textarea id="inp-m3" placeholder="Descreva o andamento geral da base M3..."
-          oninput="autoResize(this);patchPessoa(d=>{d.m3=this.value})">${esc(pd.m3||'')}</textarea>
+      <div class="sec-card-hdr neu"><div class="sec-card-title"><span class="ttl">Andamento Base M3</span><span class="badge badge-m3">M3</span></div></div>
+      <div class="sec-card-body"><div class="ta-box"><label>Observações gerais M3</label>
+        <textarea id="inp-m3" placeholder="Descreva o andamento..." oninput="autoResize(this);patch(d=>{d.m3=this.value})">${esc(pd.m3||'')}</textarea>
       </div></div>
     </div>
-
     <div class="grp-hdr"><div class="grp-pill info">Observações Gerais</div><div class="grp-line"></div></div>
     <div class="sec-card">
       <div class="sec-card-hdr neu"><div class="sec-card-title"><span class="ttl">Anotações da semana</span></div></div>
-      <div class="sec-card-body"><div class="ta-box">
-        <label>Pendências, decisões, recados ao time</label>
-        <textarea id="inp-obs" placeholder="Registre pendências, decisões e recados..."
-          oninput="autoResize(this);patchPessoa(d=>{d.obs=this.value})">${esc(pd.obs||'')}</textarea>
+      <div class="sec-card-body"><div class="ta-box"><label>Pendências, decisões, recados</label>
+        <textarea id="inp-obs" placeholder="Registre pendências..." oninput="autoResize(this);patch(d=>{d.obs=this.value})">${esc(pd.obs||'')}</textarea>
       </div></div>
-    </div>
-  `;
+    </div>`;
 
   renderTbl('m0ka');renderTbl('m0nka');renderTbl('m1ka');renderTbl('m1nka');
   renderDif();renderAcordos();updStats();
   setTimeout(()=>document.querySelectorAll('textarea').forEach(t=>autoResize(t)),50);
 }
 
-function selCobrador(p){
-  curCobrador=p;_editRow=null;_editDif=null;_editAcordo=null;
-  localStorage.setItem('psc_lastCobrador',p);
-  renderMain();
-}
+function selCob(p){curCobrador=p;_editRow=null;_editDif=null;_editAcordo=null;localStorage.setItem('psc_lastCob',p);renderMain();}
 
-function secCard(key,titulo,badge,badgeCls,sub,grp){
+function card(key,titulo,badge,badgeCls,sub,grp){
   return`<div class="sec-card">
     <div class="sec-card-hdr ${grp}">
-      <div class="sec-card-title">
-        <span class="ttl">${titulo}</span>
-        <span class="badge ${badgeCls}">${badge}</span>
-        <span class="sub">— ${sub}</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:6px">
-        <button class="btn sm" onclick="addLinha('${key}')">+ Cliente</button>
-      </div>
+      <div class="sec-card-title"><span class="ttl">${titulo}</span><span class="badge ${badgeCls}">${badge}</span><span class="sub">— ${sub}</span></div>
+      <button class="btn sm" onclick="addLinha('${key}')">+ Cliente</button>
     </div>
     <div class="sec-card-body">
-      <div class="sort-bar">
-        <label>Ordenar:</label>
-        <button class="sort-btn" id="sort-${key}-n" onclick="toggleSort('n','${key}')">Nome</button>
-        <button class="sort-btn" id="sort-${key}-val" onclick="toggleSort('val','${key}')">Valor ↓</button>
-        <button class="sort-btn" id="sort-${key}-vend" onclick="toggleSort('vend','${key}')">Vendedor</button>
+      <div class="sort-bar"><label>Ordenar:</label>
+        <button class="sort-btn" id="srt-${key}-n" onclick="toggleSort('n','${key}')">Nome</button>
+        <button class="sort-btn" id="srt-${key}-val" onclick="toggleSort('val','${key}')">Valor ↓</button>
+        <button class="sort-btn" id="srt-${key}-vend" onclick="toggleSort('vend','${key}')">Vendedor</button>
       </div>
       <div class="tbl-wrap"><table class="ct">
         <thead><tr>
-          <th style="width:24%">Cliente</th>
-          <th style="width:7%">UF</th>
+          <th style="width:24%">Cliente</th><th style="width:7%">UF</th>
           <th style="width:14%">${key.includes('nka')?'Responsável':'Vendedor KA'}</th>
           <th style="width:12%;text-align:right">Valor</th>
           <th style="width:17%">Situação</th>
@@ -748,126 +678,95 @@ function secCard(key,titulo,badge,badgeCls,sub,grp){
   </div>`;
 }
 
-// ── TABLE ─────────────────────────────────────────────────────
-function sortArr(arr,key,dir){
-  return [...arr].sort((a,b)=>{
-    let va=a[key]??'',vb=b[key]??'';
-    if(key==='val'){va=parseFloat(va)||0;vb=parseFloat(vb)||0;}
-    else{va=String(va).toLowerCase();vb=String(vb).toLowerCase();}
-    if(va<vb)return dir==='asc'?-1:1;
-    if(va>vb)return dir==='asc'?1:-1;
-    return 0;
-  });
+// ══════════════════════════════════════════════════════════════
+// TABLE
+// ══════════════════════════════════════════════════════════════
+function sortArr(arr,sk,sd){
+  return[...arr].sort((a,b)=>{let va=a[sk]??'',vb=b[sk]??'';if(sk==='val'){va=parseFloat(va)||0;vb=parseFloat(vb)||0;}else{va=String(va).toLowerCase();vb=String(vb).toLowerCase();}if(va<vb)return sd==='asc'?-1:1;if(va>vb)return sd==='asc'?1:-1;return 0;});
 }
-function toggleSort(sk,key){
-  const cur=_sortKey[key];
-  if(cur===sk)_sortDir[key]=_sortDir[key]==='asc'?'desc':'asc';
-  else{_sortKey[key]=sk;_sortDir[key]=sk==='val'?'desc':'asc';}
-  renderTbl(key);
-}
+function toggleSort(sk,key){const cur=_sortKey[key];if(cur===sk)_sortDir[key]=_sortDir[key]==='asc'?'desc':'asc';else{_sortKey[key]=sk;_sortDir[key]=sk==='val'?'desc':'asc';}renderTbl(key);}
 
-function showPicker(key,i,btnEl,event){
-  event.stopPropagation();
+function showPicker(key,i,btnEl,ev){
+  ev.stopPropagation();
   document.querySelectorAll('.st-picker').forEach(p=>p.remove());
-  const pd=getCurPessoa();if(!pd)return;
+  const pd=getCurData();if(!pd)return;
   normSt(pd[key][i]);
   const tags=pd[key][i].tags||[];
-  const picker=document.createElement('div');
-  picker.className='st-picker';
-  picker.innerHTML=ST.map(o=>{
-    const sel=tags.includes(o.v);
-    return`<span class="st-picker-opt pill ${o.c}" style="opacity:${sel?.45:1};border:1.5px solid ${sel?'currentColor':'transparent'}"
-      onclick="toggleTag('${key}',${i},'${o.v}');this.closest('.st-picker').remove()">${o.l}</span>`;
-  }).join('');
-  btnEl.parentNode.style.position='relative';
-  btnEl.parentNode.appendChild(picker);
+  const picker=document.createElement('div');picker.className='st-picker';
+  picker.innerHTML=ST.map(o=>{const sel=tags.includes(o.v);return`<span class="st-picker-opt pill ${o.c}" style="opacity:${sel?.45:1};border:1.5px solid ${sel?'currentColor':'transparent'}" onclick="toggleTag('${key}',${i},'${o.v}');this.closest('.st-picker').remove()">${o.l}</span>`;}).join('');
+  btnEl.parentNode.style.position='relative';btnEl.parentNode.appendChild(picker);
   setTimeout(()=>document.addEventListener('click',function h(e){if(!picker.contains(e.target)){picker.remove();document.removeEventListener('click',h);}},true),10);
 }
-function toggleTag(key,i,v){
-  patchPessoa(d=>{
-    normSt(d[key][i]);
-    const tags=d[key][i].tags;
-    const idx=tags.indexOf(v);
-    if(idx>=0)tags.splice(idx,1);else tags.push(v);
-  });
-  renderTbl(key);
-}
+function toggleTag(key,i,v){patch(d=>{normSt(d[key][i]);const tags=d[key][i].tags;const idx=tags.indexOf(v);if(idx>=0)tags.splice(idx,1);else tags.push(v);});renderTbl(key);}
 
 function renderTbl(key){
-  const pd=getCurPessoa();
+  const pd=getCurData();
   if(!pd||!document.getElementById('body-'+key))return;
   let arr=(pd[key]||[]).map((c,i)=>({...normSt(c),_i:i}));
   const sk=_sortKey[key],sd=_sortDir[key]||'desc';
   if(sk)arr=sortArr(arr,sk,sd);
   ['n','val','vend'].forEach(k=>{
-    const btn=document.getElementById(`sort-${key}-${k}`);if(!btn)return;
+    const btn=document.getElementById(`srt-${key}-${k}`);if(!btn)return;
     const lbl=k==='n'?'Nome':k==='val'?'Valor':'Vendedor';
     btn.className='sort-btn'+(sk===k?' active':'');
     btn.textContent=lbl+(sk===k?(sd==='asc'?' ↑':' ↓'):'');
   });
   const isNKA=key.includes('nka');
   document.getElementById('body-'+key).innerHTML=arr.map(c=>{
-    const i=c._i;
-    const vc=vendorColor(c.vend);
-    const editing=_editRow===key+'-'+i;
-    if(editing){
-      return`<tr class="row-editing">
-        <td><div class="cw"><input type="text" value="${esc(c.n)}" placeholder="Nome" autofocus onchange="patchPessoa(d=>{d['${key}'][${i}].n=this.value})"></div></td>
-        <td><div class="cw"><input type="text" value="${esc(c.uf)}" placeholder="UF" style="width:42px" onchange="patchPessoa(d=>{d['${key}'][${i}].uf=this.value})"></div></td>
-        <td><div class="cw"><input type="text" value="${esc(c.vend)}" placeholder="${isNKA?'Responsável':'Vendedor'}" onchange="patchPessoa(d=>{d['${key}'][${i}].vend=this.value})"></div></td>
-        <td><div class="cw" style="text-align:right"><input type="text" value="${fmtVal(c.val)}" style="text-align:right" onblur="const v=parseVal(this.value);patchPessoa(d=>{d['${key}'][${i}].val=v});this.value=fmtVal(v);updStats()"></div></td>
-        <td><div class="cw" style="position:relative">
-          <div class="multi-st">${stTags(c.tags)}</div>
-          <button class="st-add-btn" onclick="showPicker('${key}',${i},this,event)">+ situação</button>
-        </div></td>
-        <td><div class="cw"><textarea rows="2" onchange="patchPessoa(d=>{d['${key}'][${i}].obs=this.value})">${esc(c.obs||'')}</textarea></div></td>
-        <td><div class="cw" style="display:flex;flex-direction:column;gap:4px">
-          <button class="btn sm primary" onclick="_editRow=null;renderTbl('${key}')">✓</button>
-          <button class="btn-del" onclick="patchPessoa(d=>{d['${key}'].splice(${i},1)});_editRow=null;renderTbl('${key}');updStats()">✕</button>
-        </div></td>
-      </tr>`;
-    }
-    return`<tr class="row-view" onclick="if(event.target.closest('button'))return;_editRow='${key}-${i}';renderTbl('${key}')" title="Clique para editar">
-      <td><div class="cw"><span class="cli-nome-c">${esc(c.n)||'<em style="color:var(--text3)">sem nome</em>'}</span></div></td>
+    const i=c._i;const vc=vcor(c.vend);const editing=_editRow===key+'-'+i;
+    if(editing){return`<tr class="row-editing">
+      <td><div class="cw"><input type="text" value="${esc(c.n)}" placeholder="Nome" autofocus onchange="patch(d=>{d['${key}'][${i}].n=this.value})"></div></td>
+      <td><div class="cw"><input type="text" value="${esc(c.uf)}" placeholder="UF" style="width:42px" onchange="patch(d=>{d['${key}'][${i}].uf=this.value})"></div></td>
+      <td><div class="cw"><input type="text" value="${esc(c.vend)}" placeholder="${isNKA?'Responsável':'Vendedor'}" onchange="patch(d=>{d['${key}'][${i}].vend=this.value})"></div></td>
+      <td><div class="cw" style="text-align:right"><input type="text" value="${fmtVal(c.val)}" style="text-align:right" onblur="const v=parseVal(this.value);patch(d=>{d['${key}'][${i}].val=v});this.value=fmtVal(v);updStats()"></div></td>
+      <td><div class="cw" style="position:relative">
+        <div class="multi-st">${stTags(c.tags)}</div>
+        <button class="st-add-btn" onclick="showPicker('${key}',${i},this,event)">+ situação</button>
+      </div></td>
+      <td><div class="cw"><textarea rows="2" onchange="patch(d=>{d['${key}'][${i}].obs=this.value})">${esc(c.obs||'')}</textarea></div></td>
+      <td><div class="cw" style="display:flex;flex-direction:column;gap:4px">
+        <button class="btn sm primary" onclick="_editRow=null;renderTbl('${key}')">✓</button>
+        <button class="btn-del" onclick="patch(d=>{d['${key}'].splice(${i},1)});_editRow=null;renderTbl('${key}');updStats()">✕</button>
+      </div></td>
+    </tr>`;}
+    return`<tr class="row-view" onclick="if(event.target.closest('button'))return;_editRow='${key}-${i}';renderTbl('${key}')">
+      <td><div class="cw"><span class="cli-nome">${esc(c.n)||'<em style="color:var(--text3)">sem nome</em>'}</span></div></td>
       <td><div class="cw" style="font-size:12px;color:var(--text2)">${esc(c.uf)||'—'}</div></td>
       <td><div class="cw"><span class="vbadge" style="background:${vc}22;color:${vc};border:1.5px solid ${vc}44">${esc(c.vend)||'—'}</span></div></td>
       <td><div class="cw" style="text-align:right;font-size:13px;font-weight:700">${fmtVal(c.val)}</div></td>
-      <td><div class="cw" style="position:relative">
-        <div class="multi-st">${stTags(c.tags)||'<span style="font-size:11px;color:var(--text3)">—</span>'}</div>
-      </div></td>
+      <td><div class="cw" style="position:relative"><div class="multi-st">${stTags(c.tags)||'<span style="font-size:11px;color:var(--text3)">—</span>'}</div></div></td>
       <td><div class="cw" style="font-size:12px;color:var(--text2);white-space:pre-wrap">${esc(c.obs||'')||'<span style="color:var(--text3)">—</span>'}</div></td>
-      <td><div class="cw"><button class="btn-del" onclick="event.stopPropagation();patchPessoa(d=>{d['${key}'].splice(${i},1)});renderTbl('${key}');updStats()">✕</button></div></td>
+      <td><div class="cw"><button class="btn-del" onclick="event.stopPropagation();patch(d=>{d['${key}'].splice(${i},1)});renderTbl('${key}');updStats()">✕</button></div></td>
     </tr>`;
   }).join('');
-  const total=(pd[key]||[]).reduce((s,c)=>s+(parseFloat(c.val)||0),0);
-  const tot=document.getElementById('total-'+key);
-  if(tot)tot.querySelector('.val').textContent=fmtVal(total);
+  const tot=(pd[key]||[]).reduce((s,c)=>s+(parseFloat(c.val)||0),0);
+  const te=document.getElementById('total-'+key);if(te)te.querySelector('.val').textContent=fmtVal(tot);
   setTimeout(()=>document.querySelectorAll('#body-'+key+' textarea').forEach(t=>autoResize(t)),30);
 }
 
-// ── DIF ───────────────────────────────────────────────────────
+// ══════════════════════════════════════════════════════════════
+// DIF / ACORDOS
+// ══════════════════════════════════════════════════════════════
 function renderDif(){
-  const pd=getCurPessoa();if(!pd)return;
+  const pd=getCurData();if(!pd)return;
   const arr=pd.kaD||[];
-  document.getElementById('dif-grid').innerHTML=arr.length===0
-    ?'<p style="font-size:12px;color:var(--text3)">Nenhum cliente registrado.</p>'
+  document.getElementById('dif-grid').innerHTML=arr.length===0?'<p style="font-size:12px;color:var(--text3)">Nenhum registrado.</p>'
     :arr.map((a,i)=>{
-      const editing=_editDif===i;
-      const stObj=ST.find(x=>x.v===a.st)||ST[0];
+      const editing=_editDif===i;const stO=ST.find(x=>x.v===a.st)||ST[0];
       if(editing){return`<div class="dif-card" style="border-color:var(--praso);background:var(--bg2);cursor:default" onclick="event.stopPropagation()">
         <p style="font-size:10px;font-weight:700;text-transform:uppercase;color:var(--praso);margin-bottom:8px">Editando</p>
-        <input type="text" placeholder="Nome do cliente" value="${esc(a.n)}" onchange="patchPessoa(d=>{d.kaD[${i}].n=this.value})">
-        <select onchange="patchPessoa(d=>{d.kaD[${i}].st=this.value})">${selO(ST,a.st||'sem-retorno')}</select>
-        <textarea rows="3" placeholder="Descreva a dificuldade..." onchange="patchPessoa(d=>{d.kaD[${i}].obs=this.value})">${esc(a.obs||'')}</textarea>
+        <input type="text" placeholder="Nome" value="${esc(a.n)}" onchange="patch(d=>{d.kaD[${i}].n=this.value})">
+        <select onchange="patch(d=>{d.kaD[${i}].st=this.value})">${selO(ST,a.st||'sem-retorno')}</select>
+        <textarea rows="3" placeholder="Descreva..." onchange="patch(d=>{d.kaD[${i}].obs=this.value})">${esc(a.obs||'')}</textarea>
         <div style="display:flex;gap:6px;justify-content:space-between">
-          <button class="btn sm danger" onclick="event.stopPropagation();patchPessoa(d=>{d.kaD.splice(${i},1)});_editDif=null;renderDif()">✕ Remover</button>
+          <button class="btn sm danger" onclick="event.stopPropagation();patch(d=>{d.kaD.splice(${i},1)});_editDif=null;renderDif()">✕ Remover</button>
           <button class="btn sm primary" onclick="event.stopPropagation();_editDif=null;renderDif()">✓ Fechar</button>
         </div>
       </div>`;}
       return`<div class="dif-card" onclick="_editDif=${i};renderDif()">
         <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:${a.obs?'6':'0'}px">
-          <div style="font-size:13px;font-weight:700;color:var(--text)">${esc(a.n)||'<span style="color:var(--text3);font-weight:400">Clique para preencher</span>'}</div>
-          <span class="pill ${stObj.c}" style="flex-shrink:0">${stObj.l}</span>
+          <div style="font-size:13px;font-weight:700">${esc(a.n)||'<span style="color:var(--text3);font-weight:400">Clique para preencher</span>'}</div>
+          <span class="pill ${stO.c}" style="flex-shrink:0">${stO.l}</span>
         </div>
         ${a.obs?`<div style="font-size:11px;color:var(--text2);line-height:1.5">${esc(a.obs)}</div>`:''}
         <div style="font-size:10px;color:var(--text3);margin-top:6px">Clique para editar</div>
@@ -875,29 +774,26 @@ function renderDif(){
     }).join('');
 }
 
-// ── ACORDOS ──────────────────────────────────────────────────
 function renderAcordos(){
-  const pd=getCurPessoa();if(!pd)return;
+  const pd=getCurData();if(!pd)return;
   const arr=pd.acordos||[];
-  document.getElementById('acord-grid').innerHTML=arr.length===0
-    ?'<p style="font-size:12px;color:var(--text3)">Nenhum acordo registrado.</p>'
+  document.getElementById('acord-grid').innerHTML=arr.length===0?'<p style="font-size:12px;color:var(--text3)">Nenhum registrado.</p>'
     :arr.map((a,i)=>{
-      const editing=_editAcordo===i;
-      const stObj=SA.find(x=>x.v===a.st)||SA[0];
+      const editing=_editAcordo===i;const stO=SA.find(x=>x.v===a.st)||SA[0];
       if(editing){return`<div class="ac-card" style="border-color:var(--praso);background:var(--bg2);cursor:default" onclick="event.stopPropagation()">
         <p style="font-size:10px;font-weight:700;text-transform:uppercase;color:var(--praso);margin-bottom:8px">Editando</p>
-        <input type="text" placeholder="Nome do cliente" value="${esc(a.n)}" onchange="patchPessoa(d=>{d.acordos[${i}].n=this.value})">
-        <select onchange="patchPessoa(d=>{d.acordos[${i}].st=this.value})">${selO(SA,a.st)}</select>
-        <input type="text" placeholder="Observação..." value="${esc(a.obs||'')}" onchange="patchPessoa(d=>{d.acordos[${i}].obs=this.value})">
+        <input type="text" placeholder="Nome" value="${esc(a.n)}" onchange="patch(d=>{d.acordos[${i}].n=this.value})">
+        <select onchange="patch(d=>{d.acordos[${i}].st=this.value})">${selO(SA,a.st)}</select>
+        <input type="text" placeholder="Observação..." value="${esc(a.obs||'')}" onchange="patch(d=>{d.acordos[${i}].obs=this.value})">
         <div style="display:flex;gap:6px;justify-content:space-between">
-          <button class="btn sm danger" onclick="event.stopPropagation();patchPessoa(d=>{d.acordos.splice(${i},1)});_editAcordo=null;renderAcordos();updStats()">✕ Remover</button>
+          <button class="btn sm danger" onclick="event.stopPropagation();patch(d=>{d.acordos.splice(${i},1)});_editAcordo=null;renderAcordos();updStats()">✕ Remover</button>
           <button class="btn sm primary" onclick="event.stopPropagation();_editAcordo=null;renderAcordos()">✓ Fechar</button>
         </div>
       </div>`;}
       return`<div class="ac-card" onclick="_editAcordo=${i};renderAcordos()">
         <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:${a.obs?'6':'0'}px">
           <div style="font-size:13px;font-weight:700">${esc(a.n)||'<span style="color:var(--text3);font-weight:400">Clique para preencher</span>'}</div>
-          <span class="pill ${stObj.c}" style="flex-shrink:0">${stObj.l}</span>
+          <span class="pill ${stO.c}" style="flex-shrink:0">${stO.l}</span>
         </div>
         ${a.obs?`<div style="font-size:11px;color:var(--text2)">${esc(a.obs)}</div>`:''}
         <div style="font-size:10px;color:var(--text3);margin-top:6px">Clique para editar</div>
@@ -906,22 +802,14 @@ function renderAcordos(){
   const b=document.getElementById('badge-ac');if(b)b.textContent=arr.length;
 }
 
-function addLinha(key){
-  patchPessoa(d=>{if(!d[key])d[key]=[];d[key].push({n:'',uf:'',vend:'',val:0,st:key.includes('nka')?'sem-retorno':'base',obs:'',tags:[]});});
-  const pd=getCurPessoa();
-  _editRow=key+'-'+((pd[key]||[]).length-1);
-  renderTbl(key);updStats();
-}
-function addDif(){patchPessoa(d=>{if(!d.kaD)d.kaD=[];d.kaD.push({n:'',st:'sem-retorno',obs:''});});_editDif=(getCurPessoa().kaD||[]).length-1;renderDif();}
-function addAcordo(){patchPessoa(d=>{if(!d.acordos)d.acordos=[];d.acordos.push({n:'',st:'pagando',obs:''});});_editAcordo=(getCurPessoa().acordos||[]).length-1;renderAcordos();updStats();}
+function addLinha(key){patch(d=>{if(!d[key])d[key]=[];d[key].push({n:'',uf:'',vend:'',val:0,st:key.includes('nka')?'sem-retorno':'base',obs:'',tags:[]});});const pd=getCurData();_editRow=key+'-'+((pd[key]||[]).length-1);renderTbl(key);updStats();}
+function addDif(){patch(d=>{if(!d.kaD)d.kaD=[];d.kaD.push({n:'',st:'sem-retorno',obs:''});});_editDif=(getCurData().kaD||[]).length-1;renderDif();}
+function addAcordo(){patch(d=>{if(!d.acordos)d.acordos=[];d.acordos.push({n:'',st:'pagando',obs:''});});_editAcordo=(getCurData().acordos||[]).length-1;renderAcordos();updStats();}
 
 function updStats(){
-  const pd=getCurPessoa();if(!pd)return;
+  const pd=getCurData();if(!pd)return;
   const sum=k=>(pd[k]||[]).reduce((s,c)=>s+(parseFloat(c.val)||0),0);
-  const sr=[...(pd.m0ka||[]),...(pd.m0nka||[]),...(pd.m1ka||[]),...(pd.m1nka||[])].filter(c=>{
-    const tags=c.tags||(c.st?[c.st]:[]);
-    return tags.includes('sem-retorno')||tags.includes('sem-exp');
-  }).length;
+  const sr=[...(pd.m0ka||[]),...(pd.m0nka||[]),...(pd.m1ka||[]),...(pd.m1nka||[])].filter(c=>{const t=c.tags||(c.st?[c.st]:[]);return t.includes('sem-retorno')||t.includes('sem-exp');}).length;
   const sb=document.getElementById('stats-box');
   if(sb)sb.innerHTML=`
     <div class="stat am0"><div class="lbl">M0 · KA</div><div class="val">${fmtVal(sum('m0ka'))}</div></div>
@@ -930,282 +818,132 @@ function updStats(){
     <div class="stat am1"><div class="lbl">M1/M2 · Não KA</div><div class="val">${fmtVal(sum('m1nka'))}</div></div>
     <div class="stat"><div class="lbl">Acordos</div><div class="val">${(pd.acordos||[]).length}</div></div>
     <div class="stat"><div class="lbl">Sem retorno</div><div class="val">${sr}</div></div>`;
-  ['m0ka','m0nka','m1ka','m1nka'].forEach(k=>{
-    const el=document.getElementById('total-'+k);
-    if(el)el.querySelector('.val').textContent=fmtVal(sum(k));
-  });
+  ['m0ka','m0nka','m1ka','m1nka'].forEach(k=>{const el=document.getElementById('total-'+k);if(el)el.querySelector('.val').textContent=fmtVal(sum(k));});
   const b=document.getElementById('badge-ac');if(b)b.textContent=(pd.acordos||[]).length;
 }
 
-// ── COPIAR ────────────────────────────────────────────────────
+// ══════════════════════════════════════════════════════════════
+// COPIAR
+// ══════════════════════════════════════════════════════════════
 function copiar(){
-  const pd=getCurPessoa();if(!pd)return;
-  const parts=curWK.split('|');const[mk,wk]=parts;const[y,m]=mk.split('-');
+  const pd=getCurData();if(!pd)return;
+  const parts=curSemKey.split('|');const mk=parts[0],wk=parts[1];const[y,m]=mk.split('-');
   let t=`PSC — PLANEJAMENTO SEMANAL · PRASO\n${MESES[parseInt(m)-1]} ${y} | ${wk} | ${curCobrador}\n`;
   if(pd.foco)t+=`Foco: ${pd.foco}\n`;
-  const sec=(tit,arr)=>{
-    const it=(arr||[]).filter(c=>c.n);if(!it.length)return;
-    t+=`\n━━ ${tit} ━━\n`;
-    it.forEach(c=>{
-      const tags=c.tags||(c.st?[c.st]:[]);
-      const stls=tags.map(v=>(ST.find(x=>x.v===v)||ST[ST.length-1]).l).join(', ');
-      t+=`• ${c.n}${c.uf?' ('+c.uf+')':''} — ${c.vend||'—'} — ${fmtVal(c.val)} — ${stls||'—'}${c.obs?'\n  '+c.obs:''}\n`;
-    });
-  };
-  sec('M0 KEY ACCOUNT',pd.m0ka);sec('M0 NÃO KEY ACCOUNT',pd.m0nka);
-  sec('M1/M2 KEY ACCOUNT',pd.m1ka);sec('M1/M2 NÃO KEY ACCOUNT',pd.m1nka);
+  const sec=(tit,arr)=>{const it=(arr||[]).filter(c=>c.n);if(!it.length)return;t+=`\n━━ ${tit} ━━\n`;it.forEach(c=>{const tags=c.tags||(c.st?[c.st]:[]);const stls=tags.map(v=>(ST.find(x=>x.v===v)||ST[ST.length-1]).l).join(', ');t+=`• ${c.n}${c.uf?' ('+c.uf+')':''} — ${c.vend||'—'} — ${fmtVal(c.val)} — ${stls||'—'}${c.obs?'\n  '+c.obs:''}\n`;});};
+  sec('M0 KEY ACCOUNT',pd.m0ka);sec('M0 NÃO KEY ACCOUNT',pd.m0nka);sec('M1/M2 KEY ACCOUNT',pd.m1ka);sec('M1/M2 NÃO KEY ACCOUNT',pd.m1nka);
   if((pd.kaD||[]).filter(a=>a.n).length){t+=`\n━━ KA COM DIFICULDADE ━━\n`;pd.kaD.filter(a=>a.n).forEach(a=>{const s=ST.find(x=>x.v===a.st)||ST[0];t+=`• ${a.n} — ${s.l}${a.obs?'\n  '+a.obs:''}\n`;});}
   if((pd.acordos||[]).filter(a=>a.n).length){t+=`\n━━ ACORDOS ATIVOS ━━\n`;pd.acordos.filter(a=>a.n).forEach(a=>{const s=SA.find(x=>x.v===a.st)||SA[0];t+=`• ${a.n} — ${s.l}${a.obs?' ('+a.obs+')':''}\n`;});}
-  if(pd.m3)t+=`\n━━ BASE M3 ━━\n${pd.m3}\n`;
-  if(pd.obs)t+=`\n━━ OBSERVAÇÕES ━━\n${pd.obs}\n`;
-  navigator.clipboard.writeText(t).then(()=>showToast('Resumo copiado!')).catch(()=>{const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);showToast('Copiado!');});
+  if(pd.m3)t+=`\n━━ BASE M3 ━━\n${pd.m3}\n`;if(pd.obs)t+=`\n━━ OBSERVAÇÕES ━━\n${pd.obs}\n`;
+  navigator.clipboard.writeText(t).then(()=>showToast('Copiado!')).catch(()=>{const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);showToast('Copiado!');});
 }
 
-// ── VISÃO CONSOLIDADA ─────────────────────────────────────────
+// ══════════════════════════════════════════════════════════════
+// VISÃO CONSOLIDADA
+// ══════════════════════════════════════════════════════════════
 function showVisao(){_mode='visao';_editRow=null;_editDif=null;_editAcordo=null;renderVisao();}
 
 function renderVisao(){
   const mc=document.getElementById('main');
+  // Semanas disponíveis
+  const semanas=[];
+  Object.keys(SEMANAS).sort().forEach(mk=>{
+    Object.keys(SEMANAS[mk]).sort((a,b)=>{const da=a.match(/\d+/),db=b.match(/\d+/);return da&&db?parseInt(da[0])-parseInt(db[0]):0;}).forEach(wk=>{
+      semanas.push({mk,wk,key:semKey(mk,wk)});
+    });
+  });
 
-  // Todas as semanas disponíveis
-  const todasKeys=Object.keys(DB).sort();
+  const semsFiltradas=_vSemana==='todas'?semanas:semanas.filter(s=>s.key===_vSemana);
 
-  // Determinar semana selecionada para visão
-  const semanaAtualStr=getCurrentWeekStr();
-  let semanasFiltradas=todasKeys;
-
-  // Chips de semana para filtro
-  const semanaOpts=[{v:'todas',l:'Todas as semanas'},...todasKeys.map(k=>{
-    const parts=k.split('|');if(parts.length!==2)return null;
-    const[mk,wk]=parts;const[y,m]=mk.split('-');
-    return{v:k,l:`${MESES[parseInt(m)-1].substring(0,3)} · ${wk}`};
-  }).filter(Boolean)];
-
-  if(_visaoSemana!=='todas'){
-    semanasFiltradas=todasKeys.filter(k=>k===_visaoSemana);
-    if(!semanasFiltradas.length)semanasFiltradas=todasKeys;
-  }
-
-  // Coletar clientes consolidados
   function getClientes(secKey){
     const lista=[];
-    semanasFiltradas.forEach(k=>{
-      const parts=k.split('|');if(parts.length!==2)return;
-      const[mk,wk]=parts;
-      COBRADORES.forEach(p=>{
-        if(_visaoFilter!=='Todos'&&_visaoFilter!==p)return;
-        const d=DB[k];if(!d||!d[p])return;
-        (d[p][secKey]||[]).filter(c=>c.n).forEach(c=>{
-          lista.push({...normSt(c),cobrador:p,semana:wk});
-        });
+    semsFiltradas.forEach(({mk,wk,key})=>{
+      COBRADORES.forEach(cob=>{
+        if(_vFiltro!=='Todos'&&_vFiltro!==cob)return;
+        const d=DB[cob]&&DB[cob][key];if(!d)return;
+        (d[secKey]||[]).filter(c=>c.n).forEach(c=>{lista.push({...normSt(c),cob,wk});});
       });
     });
-    // Ordenar por valor desc
     return lista.sort((a,b)=>(parseFloat(b.val)||0)-(parseFloat(a.val)||0));
   }
-
-  function getKADif(){
-    const lista=[];
-    semanasFiltradas.forEach(k=>{
-      const parts=k.split('|');if(parts.length!==2)return;
-      const[mk,wk]=parts;
-      COBRADORES.forEach(p=>{
-        if(_visaoFilter!=='Todos'&&_visaoFilter!==p)return;
-        const d=DB[k];if(!d||!d[p])return;
-        (d[p].kaD||[]).filter(a=>a.n).forEach(a=>{lista.push({...a,cobrador:p,semana:wk});});
-      });
-    });
-    return lista;
-  }
-
-  function getAcordos(){
-    const lista=[];
-    semanasFiltradas.forEach(k=>{
-      const parts=k.split('|');if(parts.length!==2)return;
-      const[mk,wk]=parts;
-      COBRADORES.forEach(p=>{
-        if(_visaoFilter!=='Todos'&&_visaoFilter!==p)return;
-        const d=DB[k];if(!d||!d[p])return;
-        (d[p].acordos||[]).filter(a=>a.n).forEach(a=>{lista.push({...a,cobrador:p,semana:wk});});
-      });
-    });
-    return lista;
-  }
+  function getKAD(){const l=[];semsFiltradas.forEach(({mk,wk,key})=>{COBRADORES.forEach(cob=>{if(_vFiltro!=='Todos'&&_vFiltro!==cob)return;const d=DB[cob]&&DB[cob][key];if(!d)return;(d.kaD||[]).filter(a=>a.n).forEach(a=>{l.push({...a,cob,wk});});});});return l;}
+  function getAcordos(){const l=[];semsFiltradas.forEach(({mk,wk,key})=>{COBRADORES.forEach(cob=>{if(_vFiltro!=='Todos'&&_vFiltro!==cob)return;const d=DB[cob]&&DB[cob][key];if(!d)return;(d.acordos||[]).filter(a=>a.n).forEach(a=>{l.push({...a,cob,wk});});});});return l;}
 
   function fmtTbl(arr){
-    if(!arr.length)return`<div class="empty-visao">Nenhum cliente registrado</div>`;
+    if(!arr.length)return`<div class="empty-v">Nenhum cliente registrado</div>`;
     const total=arr.reduce((s,c)=>s+(parseFloat(c.val)||0),0);
-    return`<div style="overflow-x:auto"><table class="visao-table">
-      <thead><tr>
-        <th style="width:22%">Cliente</th><th style="width:7%">UF</th>
-        <th style="width:13%">Vendedor</th><th style="width:11%;text-align:right">Valor</th>
-        <th style="width:14%">Situação</th><th style="width:11%">Cobrador</th>
-        <th style="width:10%">Semana</th><th style="width:12%">Observação</th>
-      </tr></thead>
+    return`<div style="overflow-x:auto"><table class="vtable">
+      <thead><tr><th style="width:20%">Cliente</th><th style="width:6%">UF</th><th style="width:12%">Vendedor</th><th style="width:10%;text-align:right">Valor</th><th style="width:14%">Situação</th><th style="width:10%">Cobrador</th><th style="width:10%">Semana</th><th style="width:18%">Observação</th></tr></thead>
       <tbody>${arr.map(c=>{
-        const vc=vendorColor(c.vend);
-        const cc=COBRADOR_COLORS[c.cobrador]||'#9B9DA8';
+        const vc=vcor(c.vend);const cc=COR[c.cob]||'#9B9DA8';
         const tags=c.tags||(c.st?[c.st]:[]);
-        const stHtml=tags.map(v=>{const o=ST.find(x=>x.v===v)||ST[ST.length-1];return`<span class="pill ${o.c}">${o.l}</span>`;}).join(' ');
-        return`<tr>
-          <td><strong style="font-size:13px">${esc(c.n)}</strong></td>
-          <td>${esc(c.uf)||'—'}</td>
-          <td><span class="vbadge" style="background:${vc}22;color:${vc};border:1.5px solid ${vc}44">${esc(c.vend)||'—'}</span></td>
-          <td style="text-align:right;font-weight:700">${fmtVal(c.val)}</td>
-          <td>${stHtml||'—'}</td>
-          <td><span class="cobrador-badge" style="background:${cc}22;color:${cc};border:1px solid ${cc}44">${esc(c.cobrador)}</span></td>
-          <td style="font-size:11px;color:var(--text3)">${esc(c.semana)}</td>
-          <td style="font-size:11px;color:var(--text2)">${esc(c.obs||'')}</td>
-        </tr>`;
-      }).join('')}</tbody>
-    </table>
-    <div style="padding:8px 10px;border-top:1px solid var(--brd);text-align:right;font-size:13px;font-weight:700;background:var(--bg2)">
-      Total: ${fmtVal(total)} · ${arr.length} clientes
-    </div></div>`;
+        const stH=tags.map(v=>{const o=ST.find(x=>x.v===v)||ST[ST.length-1];return`<span class="pill ${o.c}">${o.l}</span>`;}).join(' ');
+        return`<tr><td><strong style="font-size:13px">${esc(c.n)}</strong></td><td>${esc(c.uf)||'—'}</td><td><span class="vbadge" style="background:${vc}22;color:${vc};border:1.5px solid ${vc}44">${esc(c.vend)||'—'}</span></td><td style="text-align:right;font-weight:700">${fmtVal(c.val)}</td><td>${stH||'—'}</td><td><span class="cbadge" style="background:${cc}22;color:${cc};border:1px solid ${cc}44">${esc(c.cob)}</span></td><td style="font-size:11px;color:var(--text3)">${esc(c.wk)}</td><td style="font-size:11px;color:var(--text2)">${esc(c.obs||'')}</td></tr>`;
+      }).join('')}</tbody></table>
+      <div style="padding:8px 10px;border-top:1px solid var(--brd);text-align:right;font-size:13px;font-weight:700;background:var(--bg2)">Total: ${fmtVal(total)} · ${arr.length} clientes</div></div>`;
   }
 
-  const m0ka=getClientes('m0ka'),m0nka=getClientes('m0nka');
-  const m1ka=getClientes('m1ka'),m1nka=getClientes('m1nka');
-  const kaD=getKADif(),acordos=getAcordos();
-  const totalGeral=[...m0ka,...m0nka,...m1ka,...m1nka].reduce((s,c)=>s+(parseFloat(c.val)||0),0);
+  const m0ka=getClientes('m0ka'),m0nka=getClientes('m0nka'),m1ka=getClientes('m1ka'),m1nka=getClientes('m1nka');
+  const kaD=getKAD(),acordos=getAcordos();
+  const totalG=[...m0ka,...m0nka,...m1ka,...m1nka].reduce((s,c)=>s+(parseFloat(c.val)||0),0);
 
   mc.innerHTML=`
     <div class="topbar">
-      <div class="topbar-left">
-        <h2>📊 Visão Consolidada</h2>
-        <p>Total geral: ${fmtVal(totalGeral)} · ${m0ka.length+m0nka.length+m1ka.length+m1nka.length} clientes</p>
-      </div>
+      <div class="topbar-left"><h2>📊 Visão Consolidada</h2><p>Total: ${fmtVal(totalG)} · ${m0ka.length+m0nka.length+m1ka.length+m1nka.length} clientes</p></div>
       <button class="btn" onclick="_mode='week';renderMain()">← Voltar</button>
     </div>
-
-    <div class="filter-bar">
-      <label>Cobrador:</label>
-      ${['Todos',...COBRADORES].map(p=>`<button class="filter-chip${_visaoFilter===p?' active':''}" 
-        style="${_visaoFilter===p&&p!=='Todos'?`background:${COBRADOR_COLORS[p]};border-color:${COBRADOR_COLORS[p]}`:''}"
-        onclick="_visaoFilter='${p}';renderVisao()">${p}</button>`).join('')}
+    <div class="filter-bar"><label>Cobrador:</label>
+      ${['Todos',...COBRADORES].map(p=>{const cor=COR[p];const a=_vFiltro===p;return`<button class="fchip${a?' active':''}" style="${a&&cor?`background:${cor};border-color:${cor}`:''}" onclick="_vFiltro='${p}';renderVisao()">${p}</button>`;}).join('')}
     </div>
-
-    <div class="filter-bar">
-      <label>Semana:</label>
-      ${semanaOpts.map(s=>`<button class="filter-chip${_visaoSemana===s.v?' active':''}" onclick="_visaoSemana='${s.v}';renderVisao()">${s.l}</button>`).join('')}
+    <div class="filter-bar"><label>Semana:</label>
+      <button class="fchip${_vSemana==='todas'?' active':''}" onclick="_vSemana='todas';renderVisao()">Todas</button>
+      ${semanas.map(s=>`<button class="fchip${_vSemana===s.key?' active':''}" onclick="_vSemana='${s.key}';renderVisao()">${s.wk}</button>`).join('')}
     </div>
-
     <div class="grp-hdr"><div class="grp-pill m0">M0 · Maiores Clientes</div><div class="grp-line"></div></div>
-    <div class="visao-sec">
-      <div class="visao-sec-hdr m0"><div class="visao-ttl">Key Account <span class="badge badge-ka">KA</span></div><strong>${fmtVal(m0ka.reduce((s,c)=>s+(parseFloat(c.val)||0),0))}</strong></div>
-      ${fmtTbl(m0ka)}
-    </div>
-    <div class="visao-sec">
-      <div class="visao-sec-hdr m0"><div class="visao-ttl">Não Key Account <span class="badge badge-nka">Não KA</span></div><strong>${fmtVal(m0nka.reduce((s,c)=>s+(parseFloat(c.val)||0),0))}</strong></div>
-      ${fmtTbl(m0nka)}
-    </div>
-
+    <div class="vsec"><div class="vsec-hdr m0"><div class="vttl">Key Account <span class="badge badge-ka">KA</span></div><strong>${fmtVal(m0ka.reduce((s,c)=>s+(parseFloat(c.val)||0),0))}</strong></div>${fmtTbl(m0ka)}</div>
+    <div class="vsec"><div class="vsec-hdr m0"><div class="vttl">Não Key Account <span class="badge badge-nka">Não KA</span></div><strong>${fmtVal(m0nka.reduce((s,c)=>s+(parseFloat(c.val)||0),0))}</strong></div>${fmtTbl(m0nka)}</div>
     <div class="grp-hdr"><div class="grp-pill m1">M1/M2 · Maiores Clientes</div><div class="grp-line"></div></div>
-    <div class="visao-sec">
-      <div class="visao-sec-hdr m1"><div class="visao-ttl">Key Account <span class="badge badge-m1">KA</span></div><strong>${fmtVal(m1ka.reduce((s,c)=>s+(parseFloat(c.val)||0),0))}</strong></div>
-      ${fmtTbl(m1ka)}
-    </div>
-    <div class="visao-sec">
-      <div class="visao-sec-hdr m1"><div class="visao-ttl">Não Key Account <span class="badge badge-nka">Não KA</span></div><strong>${fmtVal(m1nka.reduce((s,c)=>s+(parseFloat(c.val)||0),0))}</strong></div>
-      ${fmtTbl(m1nka)}
-    </div>
-
-    ${kaD.length?`
-    <div class="grp-hdr"><div class="grp-pill crit">⚠ KA com Dificuldade</div><div class="grp-line"></div></div>
-    <div class="visao-sec">
-      <div class="visao-sec-hdr crit"><div class="visao-ttl">Situações críticas <span class="badge badge-dif">Atenção</span></div></div>
-      <div style="overflow-x:auto"><table class="visao-table">
-        <thead><tr><th>Cliente</th><th>Situação</th><th>Cobrador</th><th>Semana</th><th>Observação</th></tr></thead>
-        <tbody>${kaD.map(a=>{const cc=COBRADOR_COLORS[a.cobrador]||'#9B9DA8';const s=ST.find(x=>x.v===a.st)||ST[0];return`<tr>
-          <td><strong>${esc(a.n)}</strong></td>
-          <td><span class="pill ${s.c}">${s.l}</span></td>
-          <td><span class="cobrador-badge" style="background:${cc}22;color:${cc};border:1px solid ${cc}44">${esc(a.cobrador)}</span></td>
-          <td style="font-size:11px;color:var(--text3)">${esc(a.semana)}</td>
-          <td style="font-size:11px;color:var(--text2)">${esc(a.obs||'')}</td>
-        </tr>`;}).join('')}</tbody>
-      </table></div>
-    </div>`:''}
-
-    ${acordos.length?`
-    <div class="grp-hdr"><div class="grp-pill info">Acordos Ativos</div><div class="grp-line"></div></div>
-    <div class="visao-sec">
-      <div class="visao-sec-hdr acord"><div class="visao-ttl">Acordos <span class="badge badge-ac">${acordos.length}</span></div></div>
-      <div style="overflow-x:auto"><table class="visao-table">
-        <thead><tr><th>Cliente</th><th>Status</th><th>Cobrador</th><th>Semana</th><th>Observação</th></tr></thead>
-        <tbody>${acordos.map(a=>{const cc=COBRADOR_COLORS[a.cobrador]||'#9B9DA8';const s=SA.find(x=>x.v===a.st)||SA[0];return`<tr>
-          <td><strong>${esc(a.n)}</strong></td>
-          <td><span class="pill ${s.c}">${s.l}</span></td>
-          <td><span class="cobrador-badge" style="background:${cc}22;color:${cc};border:1px solid ${cc}44">${esc(a.cobrador)}</span></td>
-          <td style="font-size:11px;color:var(--text3)">${esc(a.semana)}</td>
-          <td style="font-size:11px;color:var(--text2)">${esc(a.obs||'')}</td>
-        </tr>`;}).join('')}</tbody>
-      </table></div>
-    </div>`:''}
+    <div class="vsec"><div class="vsec-hdr m1"><div class="vttl">Key Account <span class="badge badge-m1">KA</span></div><strong>${fmtVal(m1ka.reduce((s,c)=>s+(parseFloat(c.val)||0),0))}</strong></div>${fmtTbl(m1ka)}</div>
+    <div class="vsec"><div class="vsec-hdr m1"><div class="vttl">Não Key Account <span class="badge badge-nka">Não KA</span></div><strong>${fmtVal(m1nka.reduce((s,c)=>s+(parseFloat(c.val)||0),0))}</strong></div>${fmtTbl(m1nka)}</div>
+    ${kaD.length?`<div class="grp-hdr"><div class="grp-pill crit">⚠ KA com Dificuldade</div><div class="grp-line"></div></div>
+    <div class="vsec"><div class="vsec-hdr crit"><div class="vttl">Situações críticas <span class="badge badge-dif">Atenção</span></div></div>
+    <div style="overflow-x:auto"><table class="vtable"><thead><tr><th>Cliente</th><th>Situação</th><th>Cobrador</th><th>Semana</th><th>Observação</th></tr></thead>
+    <tbody>${kaD.map(a=>{const cc=COR[a.cob]||'#9B9DA8';const s=ST.find(x=>x.v===a.st)||ST[0];return`<tr><td><strong>${esc(a.n)}</strong></td><td><span class="pill ${s.c}">${s.l}</span></td><td><span class="cbadge" style="background:${cc}22;color:${cc};border:1px solid ${cc}44">${esc(a.cob)}</span></td><td style="font-size:11px;color:var(--text3)">${esc(a.wk)}</td><td style="font-size:11px;color:var(--text2)">${esc(a.obs||'')}</td></tr>`;}).join('')}</tbody></table></div></div>`:''}
+    ${acordos.length?`<div class="grp-hdr"><div class="grp-pill info">Acordos Ativos</div><div class="grp-line"></div></div>
+    <div class="vsec"><div class="vsec-hdr acord"><div class="vttl">Acordos <span class="badge badge-ac">${acordos.length}</span></div></div>
+    <div style="overflow-x:auto"><table class="vtable"><thead><tr><th>Cliente</th><th>Status</th><th>Cobrador</th><th>Semana</th><th>Observação</th></tr></thead>
+    <tbody>${acordos.map(a=>{const cc=COR[a.cob]||'#9B9DA8';const s=SA.find(x=>x.v===a.st)||SA[0];return`<tr><td><strong>${esc(a.n)}</strong></td><td><span class="pill ${s.c}">${s.l}</span></td><td><span class="cbadge" style="background:${cc}22;color:${cc};border:1px solid ${cc}44">${esc(a.cob)}</span></td><td style="font-size:11px;color:var(--text3)">${esc(a.wk)}</td><td style="font-size:11px;color:var(--text2)">${esc(a.obs||'')}</td></tr>`;}).join('')}</tbody></table></div></div>`:''}
   `;
 }
 
-// ── INIT ──────────────────────────────────────────────────────
+// ══════════════════════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════════════════════
 async function init(){
   setSync('saving','Conectando...');
-  document.getElementById('main').innerHTML=
-    `<div class="empty"><span class="ico" style="font-size:28px;opacity:.25">⏳</span><p style="margin-bottom:0;font-size:13px">Carregando...</p></div>`;
+  document.getElementById('main').innerHTML=`<div class="empty"><span class="ico" style="font-size:28px;opacity:.25">⏳</span><p style="margin-bottom:0;font-size:13px">Carregando dados...</p></div>`;
 
-  const raw=await cloudGet();
+  await loadAll();
 
-  // Carregar DB — aceitar qualquer formato válido
-  DB={};
-  Object.keys(raw).forEach(k=>{
-    const val=raw[k];
-    if(!val||typeof val!=='object')return;
-    if(k.includes('|')){
-      // Formato correto: "2026-07|13/07 a 17/07"
-      // Garantir que tem todas as cobradoras
-      const week=Object.assign(defWeek(k.split('|')[0],k.split('|')[1]),val);
-      COBRADORES.forEach(p=>{if(!week[p])week[p]=defPessoa();});
-      DB[k]=week;
-    } else {
-      // Formato antigo: chave é só o mês "2026-07"
-      // Cada subchave é uma semana
-      Object.keys(val).forEach(wk=>{
-        const weekData=val[wk];
-        if(!weekData||typeof weekData!=='object')return;
-        const newKey=k+'|'+wk;
-        if(!DB[newKey]){
-          const week=defWeek(k,wk);
-          // Tentar mapear dados por cobrador
-          COBRADORES.forEach(p=>{
-            if(weekData[p])week[p]=weekData[p];
-          });
-          DB[newKey]=week;
-        }
-      });
-    }
-  });
+  // Restaurar última posição
+  const lastSem=localStorage.getItem('psc_lastSem');
+  const lastCob=localStorage.getItem('psc_lastCob');
+  if(lastCob&&COBRADORES.includes(lastCob))curCobrador=lastCob;
 
-  // Restaurar última semana
-  const lastWK=localStorage.getItem('psc_lastWK');
-  const lastCobrador=localStorage.getItem('psc_lastCobrador');
-  if(lastCobrador&&COBRADORES.includes(lastCobrador))curCobrador=lastCobrador;
-
-  const keys=Object.keys(DB).sort();
-  if(lastWK&&DB[lastWK]){curWK=lastWK;}
-  else if(keys.length>0){curWK=keys[keys.length-1];}
-  else{curWK=null;}
+  const mks=Object.keys(SEMANAS).sort();
+  if(lastSem){
+    const parts=lastSem.split('|');
+    if(parts.length===2&&SEMANAS[parts[0]]&&SEMANAS[parts[0]][parts[1]])curSemKey=lastSem;
+  }
+  if(!curSemKey&&mks.length){
+    const lastMk=mks[mks.length-1];const wks=Object.keys(SEMANAS[lastMk]).sort();
+    if(wks.length)curSemKey=semKey(lastMk,wks[wks.length-1]);
+  }
 
   document.getElementById('inp-mes').value=new Date().getMonth();
   document.getElementById('inp-ano').value=new Date().getFullYear();
   setSync('ok','Conectado · dados compartilhados ✓');
   renderSB();renderMain();
-
-  // Auto-criar semana atual se não existir
-  const hoje=new Date();
-  const mk=mesKey(hoje.getMonth(),hoje.getFullYear());
-  const semAtual=getCurrentWeekStr();
-  const keyAtual=wkKey(mk,semAtual);
-  if(!DB[keyAtual]){
-    // Sugerir criação da semana atual
-    console.log('Semana atual não existe:',keyAtual);
-  }
 }
 init();
 </script>
