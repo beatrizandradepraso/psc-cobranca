@@ -1152,17 +1152,33 @@ async function init(){
 
   const raw=await cloudGet();
 
-  // Converter dados antigos se necessário e carregar DB
+  // Carregar DB — aceitar qualquer formato válido
   DB={};
   Object.keys(raw).forEach(k=>{
     const val=raw[k];
+    if(!val||typeof val!=='object')return;
     if(k.includes('|')){
-      // Novo formato: cada chave é uma semana com dados por cobrador
-      if(val&&typeof val==='object'&&val.Beatriz!==undefined){
-        DB[k]=val;
-      } else {
-        // Formato antigo por pessoa separada — ignorar
-      }
+      // Formato correto: "2026-07|13/07 a 17/07"
+      // Garantir que tem todas as cobradoras
+      const week=Object.assign(defWeek(k.split('|')[0],k.split('|')[1]),val);
+      COBRADORES.forEach(p=>{if(!week[p])week[p]=defPessoa();});
+      DB[k]=week;
+    } else {
+      // Formato antigo: chave é só o mês "2026-07"
+      // Cada subchave é uma semana
+      Object.keys(val).forEach(wk=>{
+        const weekData=val[wk];
+        if(!weekData||typeof weekData!=='object')return;
+        const newKey=k+'|'+wk;
+        if(!DB[newKey]){
+          const week=defWeek(k,wk);
+          // Tentar mapear dados por cobrador
+          COBRADORES.forEach(p=>{
+            if(weekData[p])week[p]=weekData[p];
+          });
+          DB[newKey]=week;
+        }
+      });
     }
   });
 
