@@ -236,6 +236,25 @@ table.ct textarea{resize:vertical;min-height:38px;line-height:1.5}
 
 @media(max-width:680px){.sidebar{display:none}.main-inner{padding:1rem 1rem 4rem}}
 @media print{.sidebar,.topbar-acts,.btn,.btn-del,.btn-new-wk,.sort-bar,.st-add-btn,.pessoa-tabs{display:none!important}.shell{display:block}.main{overflow:visible;background:#fff}.main-inner{max-width:100%;padding:1rem}.sec-card{break-inside:avoid}}
+
+/* ── LIMITE MANUAL ── */
+.limite-wrap{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.toggle-limite{display:inline-flex;align-items:center;gap:5px;cursor:pointer;user-select:none;font-size:11px;font-weight:600}
+.toggle-limite input{display:none}
+.toggle-track{width:32px;height:18px;border-radius:20px;background:var(--brd2);transition:background .2s;flex-shrink:0;position:relative}
+.toggle-track::after{content:'';position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:#fff;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.toggle-limite input:checked+.toggle-track{background:#22c55e}
+.toggle-limite input:checked+.toggle-track::after{transform:translateX(14px)}
+.toggle-label-sim{color:#22c55e;display:none}
+.toggle-label-nao{color:var(--text3)}
+.toggle-limite input:checked~.toggle-label-sim{display:inline}
+.toggle-limite input:checked~.toggle-label-nao{display:none}
+.solicitante-field{font-size:11px;padding:3px 8px;border-radius:6px;border:1px solid var(--green-bg);background:var(--green-bg);color:var(--green-txt);font-family:var(--font);width:120px;font-weight:500}
+.solicitante-field::placeholder{color:#86d4a8;font-weight:400}
+.solicitante-field:focus{outline:none;border-color:#22c55e;background:#fff}
+.limite-badge{font-size:10px;padding:2px 8px;border-radius:20px;font-weight:600;background:var(--green-bg);color:var(--green-txt);border:1px solid #86d4a8;white-space:nowrap}
+.limite-nao{font-size:10px;color:var(--text3)}
+
 </style>
 </head>
 <body>
@@ -361,13 +380,14 @@ async function sbGet(){
 async function sbSave(cobrador, mk, wk, value){
   const key=dbKey(cobrador,mk,wk);
   try{
-    const {error}=await _sb.from('psc_data').upsert(
+    const {data,error}=await _sb.from('psc_data').upsert(
       {mk:key, value:value, updated_at:new Date().toISOString()},
       {onConflict:'mk'}
-    );
-    if(error)throw error;
+    ).select();
+    if(error){console.error('sbSave erro:',error.message,error.details);return false;}
+    console.log('Salvo:',key);
     return true;
-  }catch(e){console.warn('sbSave:',e.message);return false;}
+  }catch(e){console.error('sbSave exception:',e.message);return false;}
 }
 
 async function sbDelSemana(mk,wk){
@@ -397,8 +417,8 @@ async function loadAll(){
   DB={};SEMANAS={};
   rows.forEach(row=>{
     const k=row.mk;
-    // Tentar novo formato: "Cobrador|2026-07|wk"
     const parts=k.split('|');
+    // Formato correto: "Cobrador|2026-07|wk" (3 partes)
     if(parts.length===3){
       const [cobrador,mk,wk]=parts;
       if(COBRADORES.includes(cobrador)){
@@ -409,10 +429,24 @@ async function loadAll(){
         return;
       }
     }
-    // Formato antigo "2026-07|wk" — ignorar, dados migrados
-    // Formato muito antigo "2026-07" — ignorar
+    // Ignorar formatos antigos silenciosamente
   });
   cacheSave();
+  // Apagar chaves antigas do banco automaticamente
+  await limparAntigas(rows);
+}
+
+async function limparAntigas(rows){
+  for(const row of rows){
+    const parts=row.mk.split('|');
+    // Se não tem 3 partes OU cobrador não reconhecido → apagar
+    if(parts.length!==3||!COBRADORES.includes(parts[0])){
+      try{
+        await _sb.from('psc_data').delete().eq('mk',row.mk);
+        console.log('Removida chave antiga:',row.mk);
+      }catch(e){console.warn('Erro ao remover antiga:',e);}
+    }
+  }
 }
 
 // ══════════════════════════════════════════════════════════════
@@ -664,11 +698,12 @@ function card(key,titulo,badge,badgeCls,sub,grp){
       </div>
       <div class="tbl-wrap"><table class="ct">
         <thead><tr>
-          <th style="width:24%">Cliente</th><th style="width:7%">UF</th>
-          <th style="width:14%">${key.includes('nka')?'Responsável':'Vendedor KA'}</th>
-          <th style="width:12%;text-align:right">Valor</th>
-          <th style="width:17%">Situação</th>
-          <th style="width:22%">Observação</th>
+          <th style="width:21%">Cliente</th><th style="width:6%">UF</th>
+          <th style="width:12%">${key.includes('nka')?'Responsável':'Vendedor KA'}</th>
+          <th style="width:10%;text-align:right">Valor</th>
+          <th style="width:14%">Situação</th>
+          <th style="width:16%">Limite Manual</th>
+          <th style="width:17%">Observação</th>
           <th style="width:4%"></th>
         </tr></thead>
         <tbody id="body-${key}"></tbody>
@@ -723,6 +758,18 @@ function renderTbl(key){
         <div class="multi-st">${stTags(c.tags)}</div>
         <button class="st-add-btn" onclick="showPicker('${key}',${i},this,event)">+ situação</button>
       </div></td>
+      <td><div class="cw">
+        <label class="toggle-limite">
+          <input type="checkbox" ${c.limite?'checked':''} onchange="patch(d=>{d['${key}'][${i}].limite=this.checked});this.closest('td').querySelector('.sol-wrap').style.display=this.checked?'block':'none'">
+          <span class="toggle-track"></span>
+          <span class="toggle-label-sim">Sim</span>
+          <span class="toggle-label-nao">Não</span>
+        </label>
+        <div class="sol-wrap" style="margin-top:5px;display:${c.limite?'block':'none'}">
+          <input type="text" class="solicitante-field" placeholder="Solicitante..." value="${esc(c.solicitante||'')}"
+            onchange="patch(d=>{d['${key}'][${i}].solicitante=this.value})">
+        </div>
+      </div></td>
       <td><div class="cw"><textarea rows="2" onchange="patch(d=>{d['${key}'][${i}].obs=this.value})">${esc(c.obs||'')}</textarea></div></td>
       <td><div class="cw" style="display:flex;flex-direction:column;gap:4px">
         <button class="btn sm primary" onclick="_editRow=null;renderTbl('${key}')">✓</button>
@@ -735,6 +782,11 @@ function renderTbl(key){
       <td><div class="cw"><span class="vbadge" style="background:${vc}22;color:${vc};border:1.5px solid ${vc}44">${esc(c.vend)||'—'}</span></div></td>
       <td><div class="cw" style="text-align:right;font-size:13px;font-weight:700">${fmtVal(c.val)}</div></td>
       <td><div class="cw" style="position:relative"><div class="multi-st">${stTags(c.tags)||'<span style="font-size:11px;color:var(--text3)">—</span>'}</div></div></td>
+      <td><div class="cw">
+        ${c.limite
+          ?`<div class="limite-wrap"><span class="limite-badge">✓ Limite</span><span style="font-size:10px;color:var(--green-txt);font-weight:500">${esc(c.solicitante||'')}</span></div>`
+          :`<span class="limite-nao">—</span>`}
+      </div></td>
       <td><div class="cw" style="font-size:12px;color:var(--text2);white-space:pre-wrap">${esc(c.obs||'')||'<span style="color:var(--text3)">—</span>'}</div></td>
       <td><div class="cw"><button class="btn-del" onclick="event.stopPropagation();patch(d=>{d['${key}'].splice(${i},1)});renderTbl('${key}');updStats()">✕</button></div></td>
     </tr>`;
@@ -802,7 +854,7 @@ function renderAcordos(){
   const b=document.getElementById('badge-ac');if(b)b.textContent=arr.length;
 }
 
-function addLinha(key){patch(d=>{if(!d[key])d[key]=[];d[key].push({n:'',uf:'',vend:'',val:0,st:key.includes('nka')?'sem-retorno':'base',obs:'',tags:[]});});const pd=getCurData();_editRow=key+'-'+((pd[key]||[]).length-1);renderTbl(key);updStats();}
+function addLinha(key){patch(d=>{if(!d[key])d[key]=[];d[key].push({n:'',uf:'',vend:'',val:0,st:key.includes('nka')?'sem-retorno':'base',obs:'',tags:[],limite:false,solicitante:''});});const pd=getCurData();_editRow=key+'-'+((pd[key]||[]).length-1);renderTbl(key);updStats();}
 function addDif(){patch(d=>{if(!d.kaD)d.kaD=[];d.kaD.push({n:'',st:'sem-retorno',obs:''});});_editDif=(getCurData().kaD||[]).length-1;renderDif();}
 function addAcordo(){patch(d=>{if(!d.acordos)d.acordos=[];d.acordos.push({n:'',st:'pagando',obs:''});});_editAcordo=(getCurData().acordos||[]).length-1;renderAcordos();updStats();}
 
@@ -873,12 +925,12 @@ function renderVisao(){
     if(!arr.length)return`<div class="empty-v">Nenhum cliente registrado</div>`;
     const total=arr.reduce((s,c)=>s+(parseFloat(c.val)||0),0);
     return`<div style="overflow-x:auto"><table class="vtable">
-      <thead><tr><th style="width:20%">Cliente</th><th style="width:6%">UF</th><th style="width:12%">Vendedor</th><th style="width:10%;text-align:right">Valor</th><th style="width:14%">Situação</th><th style="width:10%">Cobrador</th><th style="width:10%">Semana</th><th style="width:18%">Observação</th></tr></thead>
+      <thead><tr><th style="width:18%">Cliente</th><th style="width:5%">UF</th><th style="width:11%">Vendedor</th><th style="width:9%;text-align:right">Valor</th><th style="width:12%">Situação</th><th style="width:10%">Limite</th><th style="width:9%">Cobrador</th><th style="width:9%">Semana</th><th style="width:17%">Observação</th></tr></thead>
       <tbody>${arr.map(c=>{
         const vc=vcor(c.vend);const cc=COR[c.cob]||'#9B9DA8';
         const tags=c.tags||(c.st?[c.st]:[]);
         const stH=tags.map(v=>{const o=ST.find(x=>x.v===v)||ST[ST.length-1];return`<span class="pill ${o.c}">${o.l}</span>`;}).join(' ');
-        return`<tr><td><strong style="font-size:13px">${esc(c.n)}</strong></td><td>${esc(c.uf)||'—'}</td><td><span class="vbadge" style="background:${vc}22;color:${vc};border:1.5px solid ${vc}44">${esc(c.vend)||'—'}</span></td><td style="text-align:right;font-weight:700">${fmtVal(c.val)}</td><td>${stH||'—'}</td><td><span class="cbadge" style="background:${cc}22;color:${cc};border:1px solid ${cc}44">${esc(c.cob)}</span></td><td style="font-size:11px;color:var(--text3)">${esc(c.wk)}</td><td style="font-size:11px;color:var(--text2)">${esc(c.obs||'')}</td></tr>`;
+        return`<tr><td><strong style="font-size:13px">${esc(c.n)}</strong></td><td>${esc(c.uf)||'—'}</td><td><span class="vbadge" style="background:${vc}22;color:${vc};border:1.5px solid ${vc}44">${esc(c.vend)||'—'}</span></td><td style="text-align:right;font-weight:700">${fmtVal(c.val)}</td><td>${stH||'—'}</td><td>${c.limite?`<span class="limite-badge">✓ Limite<br><span style="font-size:9px;font-weight:400">${esc(c.solicitante||'')}</span></span>`:'<span style="font-size:10px;color:var(--text3)">—</span>'}</td><td><span class="cbadge" style="background:${cc}22;color:${cc};border:1px solid ${cc}44">${esc(c.cob)}</span></td><td style="font-size:11px;color:var(--text3)">${esc(c.wk)}</td><td style="font-size:11px;color:var(--text2)">${esc(c.obs||'')}</td></tr>`;
       }).join('')}</tbody></table>
       <div style="padding:8px 10px;border-top:1px solid var(--brd);text-align:right;font-size:13px;font-weight:700;background:var(--bg2)">Total: ${fmtVal(total)} · ${arr.length} clientes</div></div>`;
   }
